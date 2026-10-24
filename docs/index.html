@@ -85,7 +85,7 @@ a:focus-visible, .btn:focus-visible { outline: 3px solid var(--yellow); outline-
 .shot { display: block; border-radius: 16px; overflow: hidden; background: var(--white); box-shadow: 0 30px 70px rgba(0,0,0,.35); border: 6px solid rgba(255,255,255,.12); }
 .meta { margin-top: 22px; font-size: 14px; color: #a9bcd8; }
 .stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 18px 0 0; }
-.stats[hidden] { display: none; }
+.stats[hidden], .stats span[hidden] { display: none; }
 .stats span { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); color: #d3deee; font-size: 15px; }
 .stats svg { width: 18px; height: 18px; flex: none; }
 .stats i { font-style: normal; }
@@ -183,9 +183,10 @@ footer a { color: var(--white); }
 			<p class="meta" data-en="Requires WooCommerce · WordPress 6.4+ · PHP 7.4+ · Ready for translation">Requiere WooCommerce · WordPress 6.4+ · PHP 7.4+ · Listo para traducir</p>
 		</div>
 		<div class="hero-media">
-			<span class="shot"><img src="img/portada.png" alt="Portada de una tienda con GMarket: cabecera con buscador por categorías, menú de categorías y bloques de productos" data-en-alt="Home page of a store using GMarket: header with category search, category menu and product blocks" width="1200" height="900"></span>
+			<span class="shot"><img src="img/portada.png" data-en-src="img/en/portada.png" alt="Portada de una tienda con GMarket: cabecera con buscador por categorías, menú de categorías y bloques de productos" data-en-alt="Home page of a store using GMarket: header with category search, category menu and product blocks" width="1200" height="900"></span>
 			<p class="stats" id="stats" hidden>
-				<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg><b></b> <i data-en="downloads">descargas</i></span>
+				<span id="st-v" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg><b></b> <i data-en="visits">visitas</i></span>
+				<span id="st-d" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg><b></b> <i data-en="downloads">descargas</i></span>
 			</p>
 		</div>
 	</div>
@@ -353,6 +354,7 @@ footer a { color: var(--white); }
 		each('[data-en]', function (n) { if (n.dataset.es === undefined) n.dataset.es = n.textContent; n.textContent = en ? n.dataset.en : n.dataset.es; });
 		each('[data-en-h]', function (n) { if (n.dataset.esH === undefined) n.dataset.esH = n.innerHTML; n.innerHTML = en ? n.dataset.enH : n.dataset.esH; });
 		each('[data-en-alt]', function (n) { if (n.dataset.esAlt === undefined) n.dataset.esAlt = n.alt; n.alt = en ? n.dataset.enAlt : n.dataset.esAlt; });
+		each('[data-en-src]', function (n) { if (n.dataset.esSrc === undefined) n.dataset.esSrc = n.getAttribute('src'); n.setAttribute('src', en ? n.dataset.enSrc : n.dataset.esSrc); });
 		each('[data-en-aria]', function (n) { if (n.dataset.esAria === undefined) n.dataset.esAria = n.getAttribute('aria-label'); n.setAttribute('aria-label', en ? n.dataset.enAria : n.dataset.esAria); });
 		bes.setAttribute('aria-pressed', String(!en)); ben.setAttribute('aria-pressed', String(en));
 		try { localStorage.setItem('gmk-lang', l); } catch (e) {}
@@ -368,23 +370,37 @@ footer a { color: var(--white); }
 </script>
 <script>
 (function () {
-	var box = document.getElementById('stats'), total = 0;
+	var box = document.getElementById('stats'), counts = {};
 	function render() {
-		if (!total) return;
-		var en = window.gmkLang === 'en', i = box.querySelector('i');
-		box.querySelector('b').textContent = total.toLocaleString(en ? 'en-US' : 'es-ES');
-		var word = en ? i.dataset.en : (i.dataset.es !== undefined ? i.dataset.es : i.textContent);
-		i.textContent = total === 1 ? word.replace(/s$/, '') : word;
+		var en = window.gmkLang === 'en';
+		Object.keys(counts).forEach(function (id) {
+			var n = counts[id], el = document.getElementById(id), i = el.querySelector('i');
+			el.querySelector('b').textContent = n.toLocaleString(en ? 'en-US' : 'es-ES');
+			var word = en ? i.dataset.en : (i.dataset.es !== undefined ? i.dataset.es : i.textContent);
+			i.textContent = n === 1 ? word.replace(/s$/, '') : word;
+		});
 	}
 	window.gmkStats = render;
+	function show(id, n) {
+		if (!n || n < 1) return;
+		counts[id] = n;
+		document.getElementById(id).hidden = false; box.hidden = false;
+		render();
+	}
+	fetch('https://gmarket.goatcounter.com/counter/TOTAL.json')
+		.then(function (r) { if (!r.ok) throw 0; return r.json(); })
+		.then(function (d) { show('st-v', parseInt(String(d.count).replace(/\D/g, ''), 10)); })
+		.catch(function () {});
 	fetch('https://api.github.com/repos/wpdesigndev/gmarket/releases?per_page=100')
 		.then(function (r) { if (!r.ok) throw 0; return r.json(); })
 		.then(function (list) {
-			list.forEach(function (rel) { (rel.assets || []).forEach(function (a) { if (a.name === 'gmarket.zip') total += a.download_count || 0; }); });
-			if (total > 0) { box.hidden = false; render(); }
+			var n = 0;
+			list.forEach(function (rel) { (rel.assets || []).forEach(function (a) { if (a.name === 'gmarket.zip') n += a.download_count || 0; }); });
+			show('st-d', n);
 		})
 		.catch(function () {});
 })();
 </script>
+<script data-goatcounter="https://gmarket.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
