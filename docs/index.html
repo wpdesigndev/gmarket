@@ -14,9 +14,8 @@
 <meta property="og:image" content="https://wpdesigndev.github.io/gmarket/img/social-preview.png">
 <meta property="og:url" content="https://wpdesigndev.github.io/gmarket/">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts/inter.css">
 <style>
 :root {
 	--deep: #0b1e3a;
@@ -205,7 +204,7 @@ footer a { color: var(--white); }
 				</a>
 				<a class="btn btn-ghost" href="demo/" data-en="Try the demo">Probar la demo</a>
 			</div>
-			<p class="meta" data-en="Requires WooCommerce · WordPress 6.4+ · PHP 7.4+ · Ready for translation">Requiere WooCommerce · WordPress 6.4+ · PHP 7.4+ · Listo para traducir</p>
+			<p class="meta" data-en="Requires WooCommerce · WordPress 6.4+ · PHP 7.4+ · Spanish and English">Requiere WooCommerce · WordPress 6.4+ · PHP 7.4+ · Español e inglés</p>
 		</div>
 		<div class="hero-media">
 			<span class="shot"><img src="img/portada.png" data-en-src="img/en/portada.png" alt="Portada de una tienda con GMarket: cabecera con buscador por categorías, menú de categorías y bloques de productos" data-en-alt="Home page of a store using GMarket: header with category search, category menu and product blocks" width="1200" height="900"></span>
@@ -273,10 +272,10 @@ footer a { color: var(--white); }
 [gmk_categories]
 
 <span class="c" data-en="&lt;!-- Row of sale products --&gt;">&lt;!-- Fila de productos en oferta --&gt;</span>
-[gmk_row title="Ofertas" type="sale" limit="10"]
+[gmk_row title="<span data-en="Deals">Ofertas</span>" type="sale" limit="10"]
 
 <span class="c" data-en="&lt;!-- Tiles for two categories --&gt;">&lt;!-- Mosaico de dos categorías --&gt;</span>
-[gmk_tiles cats="moda,hogar"]
+[gmk_tiles cats="<span data-en="fashion,home">moda,hogar</span>"]
 
 <span class="c" data-en="&lt;!-- Header pieces (Elementor) --&gt;">&lt;!-- Piezas de cabecera (Elementor) --&gt;</span>
 [gmk_burger] [gmk_search] [gmk_cart]</code></pre>
@@ -315,7 +314,7 @@ footer a { color: var(--white); }
 			</details>
 			<details>
 				<summary data-en="Can I translate it?">¿Se puede traducir?</summary>
-				<p data-en-h="Yes. It includes the &lt;code&gt;languages/gmarket.pot&lt;/code&gt; template to translate it with Poedit or Loco Translate, and every store text can be changed from the panel.">Sí. Incluye la plantilla <code>languages/gmarket.pot</code> para traducirlo con Poedit o Loco Translate, y todos los textos de la tienda se cambian desde el panel.</p>
+				<p data-en-h="Yes. It comes in Spanish and English (it follows the language of your WordPress), it includes the &lt;code&gt;languages/gmarket.pot&lt;/code&gt; template to translate it into other languages with Poedit or Loco Translate, and every store text can be changed from the panel.">Sí. Viene en español e inglés (sigue el idioma de tu WordPress), incluye la plantilla <code>languages/gmarket.pot</code> para traducirlo a otros idiomas con Poedit o Loco Translate, y todos los textos de la tienda se cambian desde el panel.</p>
 			</details>
 			<details>
 				<summary data-en="Where can I get help?">¿Dónde pido ayuda?</summary>

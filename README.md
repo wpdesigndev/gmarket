@@ -53,7 +53,9 @@ Si diseñas el pie con Elementor Header & Footer Builder, pon estas clases CSS (
 
 ## Traducción
 
-Plantilla en `languages/gmarket.pot`. Ábrela con Poedit (o usa Loco Translate) y guarda, por ejemplo, `gmarket-en_US.po`/`.mo` en esa carpeta.
+El tema viene en **español e inglés**: sigue el idioma de tu WordPress (`languages/en_US.mo` sirve para cualquier inglés).
+
+Para otro idioma, abre la plantilla `languages/gmarket.pot` con Poedit (o usa Loco Translate) y guarda el archivo con el código del idioma, por ejemplo `fr_FR.po`/`.mo`, en esa carpeta.
 
 ## Actualizaciones
 
@@ -65,7 +67,7 @@ Escríbenos a **[gmarket@gmeti.com](mailto:gmarket@gmeti.com)** o abre un [issue
 
 ## Licencia
 
-GPLv2 o posterior (ver `LICENSE`). Iconos de pago: Font Awesome Free (CC BY 4.0). Fuente Inter (SIL OFL).
+GPLv2 o posterior (ver `LICENSE`). Iconos de pago: Font Awesome Free (CC BY 4.0). Letra Inter (SIL OFL, incluida en `assets/fonts`: el tema no se conecta a Google Fonts).
 
 ---
 
@@ -79,7 +81,8 @@ GPLv2 o posterior (ver `LICENSE`). Iconos de pago: Font Awesome Free (CC BY 4.0)
 - Side **category drawer**, **shop filters** (price, attributes, rating, stock, sale) with real counts.
 - Even **product cards**, a product page with a perks box, and **home page blocks** via shortcodes.
 - Every store text editable in *Appearance › Store texts*; colors and footer logo in *Appearance › Customize › GMarket*.
-- Works with Elementor Header & Footer Builder, TranslatePress and YITH WooCommerce Wishlist (all optional). Translation-ready (`languages/gmarket.pot`).
+- Works with Elementor Header & Footer Builder, TranslatePress and YITH WooCommerce Wishlist (all optional).
+- In **Spanish and English** (it follows your WordPress language), translation-ready (`languages/gmarket.pot`), with the Inter typeface included (no Google Fonts).
 
 **Install:** download `gmarket.zip` from the [latest release](../../releases/latest), then *Appearance → Themes → Add New Theme → Upload Theme*, and install WooCommerce. Updates arrive automatically from this repository.
 

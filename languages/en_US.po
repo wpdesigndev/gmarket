@@ -1,0 +1,984 @@
+# English translation of GMarket.
+# Copyright (C) 2026 GMETI
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: GMarket 1.0.2\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: gmarket\n"
+
+#. Theme Name of the theme
+msgid "GMarket"
+msgstr "GMarket"
+
+#. Author of the theme
+msgid "GMETI"
+msgstr "GMETI"
+
+#. translators: %s: número de comentarios.
+#: comments.php:15
+#, php-format
+msgid "%s comentario"
+msgid_plural "%s comentarios"
+msgstr[0] "%s comment"
+msgstr[1] "%s comments"
+
+#: functions.php:40
+msgid "Barra de navegación"
+msgstr "Navigation bar"
+
+#: functions.php:41
+msgid "Pie: columna 1"
+msgstr "Footer: column 1"
+
+#: functions.php:42
+msgid "Pie: columna 2"
+msgstr "Footer: column 2"
+
+#: functions.php:43
+msgid "Pie: columna 3"
+msgstr "Footer: column 3"
+
+#: functions.php:44
+msgid "Menú lateral – Ayuda"
+msgstr "Side menu – Help"
+
+#: functions.php:82
+msgid "Tienda: filtros extra"
+msgstr "Shop: extra filters"
+
+#: functions.php:84
+msgid "Widgets que aparecen debajo de los filtros de la tienda."
+msgstr "Widgets shown below the shop filters."
+
+#: header.php:14
+msgid "Saltar al contenido"
+msgstr "Skip to content"
+
+#: header.php:25 inc/settings.php:123
+msgid "Categorías"
+msgstr "Categories"
+
+#: inc/admin-notice.php:33
+msgid "necesario"
+msgstr "required"
+
+#: inc/admin-notice.php:33
+msgid "opcional"
+msgstr "optional"
+
+#: inc/admin-notice.php:36
+msgid "Para aprovechar todo el tema instala o activa:"
+msgstr "To get the most out of the theme, install or activate:"
+
+#: inc/admin-notice.php:37
+msgid "Editar los textos de la tienda"
+msgstr "Edit the store texts"
+
+#: inc/admin-notice.php:37
+msgid "No volver a mostrar"
+msgstr "Don't show again"
+
+#: inc/customizer.php:15
+msgid "Color principal (enlaces, botones secundarios)"
+msgstr "Main color (links, secondary buttons)"
+
+#: inc/customizer.php:16
+msgid "Color principal oscuro (al pasar el ratón)"
+msgstr "Dark main color (on hover)"
+
+#: inc/customizer.php:17
+msgid "Fondo de la cabecera y del pie"
+msgstr "Header and footer background"
+
+#: inc/customizer.php:18
+msgid "Color principal claro"
+msgstr "Light main color"
+
+#: inc/customizer.php:19
+msgid "Color de acento (buscador, precios destacados)"
+msgstr "Accent color (search bar, featured prices)"
+
+#: inc/customizer.php:20
+msgid "Color de acento oscuro"
+msgstr "Dark accent color"
+
+#: inc/customizer.php:21
+msgid "Color de acento claro (mensajes sobre fondo oscuro)"
+msgstr "Light accent color (messages on dark background)"
+
+#: inc/customizer.php:22
+msgid "Botón de compra"
+msgstr "Buy button"
+
+#: inc/customizer.php:23
+msgid "Botón de compra (al pasar el ratón)"
+msgstr "Buy button (on hover)"
+
+#: inc/customizer.php:24
+msgid "Fondo de la página"
+msgstr "Page background"
+
+#: inc/customizer.php:35
+msgid "Tema desarrollado por GMETI. Los textos se editan en Apariencia › Textos de la tienda."
+msgstr "Theme developed by GMETI. Texts are edited in Appearance › Store texts."
+
+#: inc/customizer.php:39
+msgid "Colores"
+msgstr "Colors"
+
+#: inc/customizer.php:51
+msgid "Pie de página"
+msgstr "Footer"
+
+#: inc/customizer.php:58
+msgid "Logo del pie"
+msgstr "Footer logo"
+
+#: inc/customizer.php:59
+msgid "Versión clara del logo, para el fondo oscuro del pie. Si no hay, se usa el logo del sitio."
+msgstr "Light version of the logo, for the dark footer background. If empty, the site logo is used."
+
+#: inc/filters.php:218
+msgid "Mínimo"
+msgstr "Minimum"
+
+#: inc/filters.php:219
+msgid "Máximo"
+msgstr "Maximum"
+
+#: inc/header-parts.php:20
+msgid "Abrir menú"
+msgstr "Open menu"
+
+#: inc/header-parts.php:88 inc/settings.php:29 inc/settings.php:29
+msgid "Carrito"
+msgstr "Cart"
+
+#: inc/header-parts.php:187
+msgid "Menú"
+msgstr "Menu"
+
+#: inc/header-parts.php:191
+msgid "Cerrar"
+msgstr "Close"
+
+#: inc/settings.php:24
+msgid "Saludo sin sesión"
+msgstr "Greeting when signed out"
+
+#: inc/settings.php:24
+msgid "Hola, identifícate"
+msgstr "Hello, sign in"
+
+#: inc/settings.php:25
+msgid "Saludo con sesión (va delante del nombre)"
+msgstr "Greeting when signed in (goes before the name)"
+
+#: inc/settings.php:25
+msgid "Hola,"
+msgstr "Hello,"
+
+#: inc/settings.php:26
+msgid "Enlace de la cuenta"
+msgstr "Account link"
+
+#: inc/settings.php:26
+msgid "Cuenta y listas"
+msgstr "Account & Lists"
+
+#: inc/settings.php:27
+msgid "Enlace de pedidos: línea pequeña"
+msgstr "Orders link: small line"
+
+#: inc/settings.php:27
+msgid "Devoluciones"
+msgstr "Returns"
+
+#: inc/settings.php:28
+msgid "Enlace de pedidos: línea grande"
+msgstr "Orders link: large line"
+
+#: inc/settings.php:28
+msgid "y pedidos"
+msgstr "& Orders"
+
+#: inc/settings.php:30
+msgid "Zona de entrega: línea pequeña"
+msgstr "Delivery area: small line"
+
+#: inc/settings.php:30
+msgid "Enviamos a"
+msgstr "We deliver to"
+
+#: inc/settings.php:31
+msgid "Zona de entrega: línea grande (vacío = se oculta)"
+msgstr "Delivery area: large line (empty = hidden)"
+
+#: inc/settings.php:31
+msgid "Todo el país"
+msgstr "The whole country"
+
+#: inc/settings.php:32
+msgid "Zona de entrega: enlace (opcional)"
+msgstr "Delivery area: link (optional)"
+
+#: inc/settings.php:33
+msgid "Barra de categorías: botón «Todas»"
+msgstr "Category bar: \"All\" button"
+
+#: inc/settings.php:33
+msgid "Todas"
+msgstr "All"
+
+#: inc/settings.php:34
+msgid "Barra de categorías: botón «Más»"
+msgstr "Category bar: \"More\" button"
+
+#: inc/settings.php:34
+msgid "Más"
+msgstr "More"
+
+#: inc/settings.php:35
+msgid "Barra de categorías: mensaje a la derecha (vacío = se oculta)"
+msgstr "Category bar: message on the right (empty = hidden)"
+
+#: inc/settings.php:35
+msgid "Envío rápido · Pago seguro"
+msgstr "Fast shipping · Secure payment"
+
+#: inc/settings.php:36
+msgid "Menú lateral: título de categorías"
+msgstr "Side menu: categories title"
+
+#: inc/settings.php:36
+msgid "Comprar por categoría"
+msgstr "Shop by category"
+
+#: inc/settings.php:37
+msgid "Menú lateral: enlace a toda la tienda"
+msgstr "Side menu: link to the whole shop"
+
+#: inc/settings.php:37
+msgid "Ver toda la tienda"
+msgstr "See the whole shop"
+
+#: inc/settings.php:38
+msgid "Menú lateral: título de ayuda (los enlaces se editan en Apariencia › Menús › «Menú lateral – Ayuda»)"
+msgstr "Side menu: help title (links are edited in Appearance › Menus › \"Side menu – Help\")"
+
+#: inc/settings.php:38
+msgid "Ayuda y configuración"
+msgstr "Help & Settings"
+
+#: inc/settings.php:39
+msgid "Menú lateral: cerrar sesión"
+msgstr "Side menu: sign out"
+
+#: inc/settings.php:39
+msgid "Cerrar sesión"
+msgstr "Sign out"
+
+#: inc/settings.php:42
+msgid "Texto de ayuda del buscador"
+msgstr "Search bar placeholder"
+
+#: inc/settings.php:42
+msgid "Busca productos, marcas y más…"
+msgstr "Search products, brands and more…"
+
+#: inc/settings.php:43
+msgid "Texto de ayuda en el móvil"
+msgstr "Placeholder on mobile"
+
+#: inc/settings.php:43
+msgid "Buscar…"
+msgstr "Search…"
+
+#: inc/settings.php:44
+msgid "Opción «todas las categorías»"
+msgstr "\"All categories\" option"
+
+#: inc/settings.php:44
+msgid "Todo"
+msgstr "All"
+
+#: inc/settings.php:45 inc/settings.php:136
+msgid "Búsqueda en vivo: sin resultados"
+msgstr "Live search: no results"
+
+#: inc/settings.php:45
+msgid "No encontramos productos con esa búsqueda."
+msgstr "We couldn't find any products for that search."
+
+#: inc/settings.php:46 inc/settings.php:137
+msgid "Búsqueda en vivo: ver todos"
+msgstr "Live search: see all"
+
+#: inc/settings.php:46
+msgid "Ver todos los resultados"
+msgstr "See all results"
+
+#: inc/settings.php:47 inc/settings.php:138
+msgid "Búsqueda en vivo: etiqueta de categoría"
+msgstr "Live search: category label"
+
+#: inc/settings.php:47
+msgid "Categoría:"
+msgstr "Category:"
+
+#: inc/settings.php:50
+msgid "Título de la tienda"
+msgstr "Shop title"
+
+#: inc/settings.php:50
+msgid "Todos los productos"
+msgstr "All products"
+
+#: inc/settings.php:51
+msgid "Título de resultados de búsqueda"
+msgstr "Search results title"
+
+#: inc/settings.php:51
+msgid "Resultados para"
+msgstr "Results for"
+
+#: inc/settings.php:52
+msgid "Ruta de navegación: inicio"
+msgstr "Breadcrumb: home"
+
+#: inc/settings.php:52
+msgid "Inicio"
+msgstr "Home"
+
+#: inc/settings.php:53
+msgid "Etiqueta de oferta"
+msgstr "Sale badge"
+
+#: inc/settings.php:53
+msgid "Oferta"
+msgstr "Sale"
+
+#: inc/settings.php:54
+msgid "Tarjeta de producto: línea de entrega (vacío = se oculta)"
+msgstr "Product card: delivery line (empty = hidden)"
+
+#: inc/settings.php:54 inc/settings.php:114
+msgid "Envío a domicilio"
+msgstr "Home delivery"
+
+#: inc/settings.php:55
+msgid "Sin resultados: título de sugerencias"
+msgstr "No results: suggestions title"
+
+#: inc/settings.php:55
+msgid "Productos que te pueden interesar"
+msgstr "Products you may like"
+
+#: inc/settings.php:56
+msgid "Sin resultados: cuántos productos sugerir (0 = ninguno)"
+msgstr "No results: how many products to suggest (0 = none)"
+
+#: inc/settings.php:57
+msgid "Blog y archivos: sin contenido"
+msgstr "Blog and archives: no content"
+
+#: inc/settings.php:57
+msgid "No hay contenido para mostrar."
+msgstr "There is nothing to show."
+
+#: inc/settings.php:60
+msgid "Panel de filtros: título"
+msgstr "Filter panel: title"
+
+#: inc/settings.php:60
+msgid "Filtrar resultados"
+msgstr "Filter results"
+
+#: inc/settings.php:61
+msgid "Botón de filtros (móvil)"
+msgstr "Filters button (mobile)"
+
+#: inc/settings.php:61 woocommerce.php:20
+msgid "Filtros"
+msgstr "Filters"
+
+#: inc/settings.php:62
+msgid "Título: categoría"
+msgstr "Title: category"
+
+#: inc/settings.php:62
+msgid "Categoría"
+msgstr "Category"
+
+#: inc/settings.php:63 inc/settings.php:63
+msgid "Todas las categorías"
+msgstr "All categories"
+
+#: inc/settings.php:64
+msgid "Título: precio"
+msgstr "Title: price"
+
+#: inc/settings.php:64
+msgid "Precio"
+msgstr "Price"
+
+#: inc/settings.php:65
+msgid "Tramos de precio (importes separados por comas)"
+msgstr "Price ranges (amounts separated by commas)"
+
+#: inc/settings.php:66
+#, php-format
+msgid "Tramo inferior (%s = importe)"
+msgstr "Lowest range (%s = amount)"
+
+#: inc/settings.php:66
+#, php-format
+msgid "Menos de %s"
+msgstr "Under %s"
+
+#: inc/settings.php:67
+#, php-format
+msgid "Tramo intermedio (%1$s y %2$s = importes)"
+msgstr "Middle range (%1$s and %2$s = amounts)"
+
+#: inc/settings.php:67
+#, php-format
+msgid "%1$s a %2$s"
+msgstr "%1$s to %2$s"
+
+#: inc/settings.php:68
+#, php-format
+msgid "Tramo superior (%s = importe)"
+msgstr "Highest range (%s = amount)"
+
+#: inc/settings.php:68
+#, php-format
+msgid "Más de %s"
+msgstr "Over %s"
+
+#: inc/settings.php:69
+msgid "Precio mínimo (campo)"
+msgstr "Minimum price (field)"
+
+#: inc/settings.php:69
+msgid "Mín"
+msgstr "Min"
+
+#: inc/settings.php:70
+msgid "Precio máximo (campo)"
+msgstr "Maximum price (field)"
+
+#: inc/settings.php:70
+msgid "Máx"
+msgstr "Max"
+
+#: inc/settings.php:71
+msgid "Botón de precio"
+msgstr "Price button"
+
+#: inc/settings.php:71
+msgid "Ir"
+msgstr "Go"
+
+#: inc/settings.php:72
+msgid "Etiqueta activa: precio"
+msgstr "Active filter: price"
+
+#: inc/settings.php:72
+msgid "Precio:"
+msgstr "Price:"
+
+#: inc/settings.php:73
+msgid "Etiqueta activa: precio desde"
+msgstr "Active filter: price from"
+
+#: inc/settings.php:73
+msgid "Precio desde"
+msgstr "Price from"
+
+#: inc/settings.php:74
+msgid "Características que se pueden filtrar (sus nombres se cambian en Productos › Atributos)"
+msgstr "Attributes that can be filtered (their names are changed in Products › Attributes)"
+
+#: inc/settings.php:75
+msgid "Título: valoración"
+msgstr "Title: rating"
+
+#: inc/settings.php:75
+msgid "Opinión media de clientes"
+msgstr "Customer reviews"
+
+#: inc/settings.php:76
+msgid "Opción de valoración"
+msgstr "Rating option"
+
+#: inc/settings.php:76
+msgid "★★★★ y más"
+msgstr "★★★★ & up"
+
+#: inc/settings.php:77
+msgid "Etiqueta activa: valoración"
+msgstr "Active filter: rating"
+
+#: inc/settings.php:77
+msgid "4 estrellas o más"
+msgstr "4 stars & up"
+
+#: inc/settings.php:78
+msgid "Título: disponibilidad"
+msgstr "Title: availability"
+
+#: inc/settings.php:78
+msgid "Disponibilidad y ofertas"
+msgstr "Availability & deals"
+
+#: inc/settings.php:79
+msgid "Solo disponibles"
+msgstr "In stock only"
+
+#: inc/settings.php:79
+msgid "Solo productos disponibles"
+msgstr "In-stock products only"
+
+#: inc/settings.php:80 inc/settings.php:80
+msgid "En oferta"
+msgstr "On sale"
+
+#: inc/settings.php:81
+msgid "Etiqueta activa: disponibles"
+msgstr "Active filter: in stock"
+
+#: inc/settings.php:81
+msgid "Disponibles"
+msgstr "In stock"
+
+#: inc/settings.php:82
+msgid "Borrar filtros"
+msgstr "Clear filters"
+
+#: inc/settings.php:82
+msgid "Borrar todos los filtros"
+msgstr "Clear all filters"
+
+#: inc/settings.php:85
+msgid "Sin precio: título del aviso"
+msgstr "No price: notice title"
+
+#: inc/settings.php:85
+msgid "Precio disponible próximamente."
+msgstr "Price available soon."
+
+#: inc/settings.php:86
+msgid "Sin precio: texto antes del correo"
+msgstr "No price: text before the email"
+
+#: inc/settings.php:86
+msgid "Si necesitas este producto, escríbenos a"
+msgstr "If you need this product, write to us at"
+
+#: inc/settings.php:87
+msgid "Sin precio: texto después del correo"
+msgstr "No price: text after the email"
+
+#: inc/settings.php:87
+msgid "y te informamos."
+msgstr "and we'll let you know."
+
+#: inc/settings.php:88
+msgid "Ventaja 1: título"
+msgstr "Perk 1: title"
+
+#: inc/settings.php:88
+msgid "Paga como prefieras"
+msgstr "Pay your way"
+
+#: inc/settings.php:89
+msgid "Ventaja 1: texto"
+msgstr "Perk 1: text"
+
+#: inc/settings.php:89
+msgid "con tarjeta de débito o crédito, PayPal, Apple Pay o Google Pay."
+msgstr "with debit or credit card, PayPal, Apple Pay or Google Pay."
+
+#: inc/settings.php:90
+msgid "Ventaja 2: título"
+msgstr "Perk 2: title"
+
+#: inc/settings.php:90
+msgid "Entrega a domicilio."
+msgstr "Home delivery."
+
+#: inc/settings.php:91
+msgid "Ventaja 2: texto"
+msgstr "Perk 2: text"
+
+#: inc/settings.php:91
+msgid "El costo de envío se calcula en el pago."
+msgstr "Shipping is calculated at checkout."
+
+#: inc/settings.php:92
+msgid "Ventaja 3: título"
+msgstr "Perk 3: title"
+
+#: inc/settings.php:92
+msgid "Compra protegida."
+msgstr "Protected purchase."
+
+#: inc/settings.php:93
+msgid "Ventaja 3: texto"
+msgstr "Perk 3: text"
+
+#: inc/settings.php:93
+msgid "Recibes la confirmación del pedido en tu correo."
+msgstr "You get the order confirmation by email."
+
+#: inc/settings.php:94
+msgid "Pestaña de características"
+msgstr "Attributes tab"
+
+#: inc/settings.php:94
+msgid "Características"
+msgstr "Specifications"
+
+#: inc/settings.php:97 inc/settings.php:97
+msgid "Resumen"
+msgstr "Dashboard"
+
+#: inc/settings.php:98
+msgid "Pedidos"
+msgstr "Orders"
+
+#: inc/settings.php:98
+msgid "Mis pedidos"
+msgstr "My orders"
+
+#: inc/settings.php:99 inc/settings.php:99
+msgid "Métodos de pago"
+msgstr "Payment methods"
+
+#: inc/settings.php:100 inc/settings.php:100
+msgid "Direcciones"
+msgstr "Addresses"
+
+#: inc/settings.php:101 inc/settings.php:101
+msgid "Datos de la cuenta"
+msgstr "Account details"
+
+#: inc/settings.php:104
+msgid "Filas: enlace «ver más»"
+msgstr "Rows: \"see more\" link"
+
+#: inc/settings.php:104
+msgid "Ver más"
+msgstr "See more"
+
+#: inc/settings.php:105
+msgid "Tarjetas: «ver todo en» (va delante del nombre de la categoría)"
+msgstr "Tiles: \"see all in\" (goes before the category name)"
+
+#: inc/settings.php:105
+msgid "Ver todo en"
+msgstr "See all in"
+
+#: inc/settings.php:106
+#, php-format
+msgid "Categorías: 1 producto (%d = número)"
+msgstr "Categories: 1 product (%d = number)"
+
+#: inc/settings.php:106
+#, php-format
+msgid "%d producto"
+msgstr "%d product"
+
+#: inc/settings.php:107
+#, php-format
+msgid "Categorías: varios productos (%d = número)"
+msgstr "Categories: several products (%d = number)"
+
+#: inc/settings.php:107
+#, php-format
+msgid "%d productos"
+msgstr "%d products"
+
+#: inc/settings.php:110
+msgid "Correo de contacto de la tienda (vacío = el del administrador)"
+msgstr "Store contact email (empty = the admin email)"
+
+#: inc/settings.php:111
+msgid "Botón «volver arriba»"
+msgstr "\"Back to top\" button"
+
+#: inc/settings.php:111
+msgid "Volver arriba"
+msgstr "Back to top"
+
+#: inc/settings.php:112
+msgid "Franja de confianza 1: título"
+msgstr "Trust strip 1: title"
+
+#: inc/settings.php:112
+msgid "Compra desde donde estés"
+msgstr "Shop from anywhere"
+
+#: inc/settings.php:113
+msgid "Franja de confianza 1: texto"
+msgstr "Trust strip 1: text"
+
+#: inc/settings.php:113
+msgid "Tienda abierta las 24 horas."
+msgstr "Store open 24 hours a day."
+
+#: inc/settings.php:114
+msgid "Franja de confianza 2: título"
+msgstr "Trust strip 2: title"
+
+#: inc/settings.php:115
+msgid "Franja de confianza 2: texto"
+msgstr "Trust strip 2: text"
+
+#: inc/settings.php:115
+msgid "Seguimiento de tu pedido por correo."
+msgstr "Order tracking by email."
+
+#: inc/settings.php:116
+msgid "Franja de confianza 3: título"
+msgstr "Trust strip 3: title"
+
+#: inc/settings.php:116
+msgid "Pago 100% seguro"
+msgstr "100% secure payment"
+
+#: inc/settings.php:117
+msgid "Franja de confianza 3: texto"
+msgstr "Trust strip 3: text"
+
+#: inc/settings.php:117
+msgid "Tarjeta, PayPal, Apple Pay y Google Pay."
+msgstr "Card, PayPal, Apple Pay and Google Pay."
+
+#: inc/settings.php:118
+msgid "Franja de confianza 4: título (el texto es el correo)"
+msgstr "Trust strip 4: title (the text is the email)"
+
+#: inc/settings.php:118
+msgid "Atención por correo"
+msgstr "Email support"
+
+#: inc/settings.php:119
+msgid "Texto junto al logo del pie"
+msgstr "Text next to the footer logo"
+
+#: inc/settings.php:119
+msgid "Tu tienda online de confianza. Compra fácil, paga seguro y recibe en casa."
+msgstr "Your trusted online store. Shop easily, pay securely and get it delivered home."
+
+#: inc/settings.php:120
+msgid "Título de la columna 1 (menú «Pie: columna 1»)"
+msgstr "Column 1 title (\"Footer: column 1\" menu)"
+
+#: inc/settings.php:120
+msgid "Conócenos"
+msgstr "Get to know us"
+
+#: inc/settings.php:121
+msgid "Título de la columna 2 (menú «Pie: columna 2»)"
+msgstr "Column 2 title (\"Footer: column 2\" menu)"
+
+#: inc/settings.php:121
+msgid "Te ayudamos"
+msgstr "Let us help you"
+
+#: inc/settings.php:122
+msgid "Título de la columna 3 (menú «Pie: columna 3»)"
+msgstr "Column 3 title (\"Footer: column 3\" menu)"
+
+#: inc/settings.php:122
+msgid "Información legal"
+msgstr "Legal information"
+
+#: inc/settings.php:123
+msgid "Título de la columna de categorías"
+msgstr "Categories column title"
+
+#: inc/settings.php:124
+msgid "Aviso sobre el pie (vacío = se oculta)"
+msgstr "Notice above the footer (empty = hidden)"
+
+#: inc/settings.php:125
+msgid "Aviso: enlace «Más información» (opcional)"
+msgstr "Notice: \"Learn more\" link (optional)"
+
+#: inc/settings.php:126
+msgid "Aviso: texto del enlace"
+msgstr "Notice: link text"
+
+#: inc/settings.php:126
+msgid "Más información"
+msgstr "Learn more"
+
+#: inc/settings.php:127
+msgid "Derechos (va detrás de «© año Nombre del sitio.»)"
+msgstr "Rights (goes after \"© year Site name.\")"
+
+#: inc/settings.php:127
+msgid "Todos los derechos reservados."
+msgstr "All rights reserved."
+
+#: inc/settings.php:128
+msgid "Iconos de pago que se muestran"
+msgstr "Payment icons shown"
+
+#: inc/settings.php:131
+msgid "Título"
+msgstr "Title"
+
+#: inc/settings.php:131
+msgid "Lo sentimos, no encontramos esta página"
+msgstr "Sorry, we couldn't find this page"
+
+#: inc/settings.php:132
+msgid "Texto"
+msgstr "Text"
+
+#: inc/settings.php:132
+msgid "Puede que el enlace haya cambiado. Busca lo que necesitas o vuelve a la tienda."
+msgstr "The link may have changed. Search for what you need or go back to the shop."
+
+#: inc/settings.php:133
+msgid "Botón"
+msgstr "Button"
+
+#: inc/settings.php:133
+msgid "Ir a la tienda"
+msgstr "Go to the shop"
+
+#: inc/settings.php:139
+msgid "Texto de ayuda del buscador en el móvil"
+msgstr "Search bar placeholder on mobile"
+
+#: inc/settings.php:140
+msgid "Lista de deseos (YITH): guardar"
+msgstr "Wishlist (YITH): save"
+
+#: inc/settings.php:141
+msgid "Lista de deseos (YITH): guardado"
+msgstr "Wishlist (YITH): saved"
+
+#: inc/settings.php:142
+msgid "Lista de deseos (YITH): ver lista"
+msgstr "Wishlist (YITH): view list"
+
+#: inc/settings.php:143
+msgid "Lista de deseos (YITH): ya está"
+msgstr "Wishlist (YITH): already added"
+
+#: inc/settings.php:144
+msgid "Lista de deseos (YITH): título"
+msgstr "Wishlist (YITH): title"
+
+#: inc/settings.php:154
+msgid "Cabecera y menú lateral"
+msgstr "Header and side menu"
+
+#: inc/settings.php:155
+msgid "Buscador"
+msgstr "Search bar"
+
+#: inc/settings.php:156
+msgid "Tienda"
+msgstr "Shop"
+
+#: inc/settings.php:157
+msgid "Filtros de la tienda"
+msgstr "Shop filters"
+
+#: inc/settings.php:158
+msgid "Ficha de producto"
+msgstr "Product page"
+
+#: inc/settings.php:159
+msgid "Mi cuenta"
+msgstr "My account"
+
+#: inc/settings.php:160
+msgid "Bloques de la portada"
+msgstr "Home page blocks"
+
+#: inc/settings.php:161
+msgid "Pie y contacto"
+msgstr "Footer and contact"
+
+#: inc/settings.php:162
+msgid "Página no encontrada (404)"
+msgstr "Page not found (404)"
+
+#: inc/settings.php:163
+msgid "Segundo idioma (solo con TranslatePress: lo que no se puede traducir con «Traducir página»)"
+msgstr "Second language (TranslatePress only: what can't be translated with \"Translate Page\")"
+
+#: inc/settings.php:185 inc/settings.php:185 inc/settings.php:265
+msgid "Textos de la tienda"
+msgstr "Store texts"
+
+#: inc/settings.php:266
+msgid "Aquí cambias los textos fijos del tema. Deja un campo vacío para ocultar ese elemento. Si usas TranslatePress, traduce el resto con «Traducir página»; la sección «Segundo idioma» es para lo que TranslatePress no puede traducir."
+msgstr "Here you change the theme's fixed texts. Leave a field empty to hide that element. If you use TranslatePress, translate the rest with \"Translate Page\"; the \"Second language\" section is for what TranslatePress can't translate."
+
+#. translators: 1: enlace al personalizador, 2: enlace a los menús.
+#: inc/settings.php:271
+#, php-format
+msgid "Colores y logo del pie: %1$s. Menús: %2$s. Logo e icono del sitio: Apariencia › Personalizar › Identidad del sitio."
+msgstr "Colors and footer logo: %1$s. Menus: %2$s. Site logo and icon: Appearance › Customize › Site Identity."
+
+#: inc/settings.php:272
+msgid "Apariencia › Personalizar › GMarket"
+msgstr "Appearance › Customize › GMarket"
+
+#: inc/settings.php:273
+msgid "Apariencia › Menús"
+msgstr "Appearance › Menus"
+
+#: inc/settings.php:305
+msgid "Aún no hay atributos. Créalos en Productos › Atributos."
+msgstr "There are no attributes yet. Create them in Products › Attributes."
+
+#: inc/settings.php:329
+msgid "Guardar textos"
+msgstr "Save texts"
+
+#: inc/settings.php:331
+msgid "GMarket · Tema desarrollado por GMETI."
+msgstr "GMarket · Theme developed by GMETI."
+
+#: inc/template-tags.php:81
+msgid "Idioma"
+msgstr "Language"
+
+#: inc/template-tags.php:103
+msgid "Métodos de pago aceptados"
+msgstr "Accepted payment methods"
+
+#: inc/woocommerce.php:20
+msgid "Ruta de navegación"
+msgstr "Breadcrumb"
+
+#: searchform.php:18 searchform.php:26
+msgid "Buscar en"
+msgstr "Search in"
+
+#: searchform.php:37
+msgid "Buscar productos"
+msgstr "Search products"
+
+#: searchform.php:42
+msgid "Buscar"
+msgstr "Search"
+
+#: woocommerce.php:23
+msgid "Cerrar filtros"
+msgstr "Close filters"

@@ -14,9 +14,8 @@
 <meta property="og:image" content="https://wpdesigndev.github.io/gmarket/img/social-preview.png">
 <meta property="og:url" content="https://wpdesigndev.github.io/gmarket/privacidad/">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../fonts/inter.css">
 <style>
 :root {
 	--deep: #0b1e3a; --blue: #0a4c9a; --green: #3a9a2a; --yellow: #ffd23f;
@@ -89,7 +88,7 @@ footer a { color: var(--white); }
 		<li><b>Sin cookies.</b> Solo recordamos el idioma que eliges (ES o EN), guardado en tu propio navegador. No hace falta ningún aviso de cookies.</li>
 		<li><b>Visitas.</b> Contamos cuántas personas visitan la web con <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">GoatCounter</a>, que no usa cookies ni guarda tu dirección IP ni datos que te identifiquen. Solo vemos totales, como el número de visitas, la página y el tipo de navegador.</li>
 		<li><b>Descargas.</b> El número de descargas que ves en la portada se pide a GitHub desde tu navegador. Esa consulta no lleva datos tuyos.</li>
-		<li><b>Fuente.</b> La letra Inter se carga desde Google Fonts, así que tu navegador se conecta a Google para descargarla, según su <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener noreferrer">política de privacidad</a>.</li>
+		<li><b>Letra.</b> La letra Inter va incluida en la propia web. No se descarga de Google ni de ningún otro servicio.</li>
 		<li><b>Alojamiento.</b> La web está en GitHub Pages. Como cualquier servidor, GitHub puede registrar tu dirección IP por seguridad, según su <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">declaración de privacidad</a>.</li>
 		<li><b>La demo.</b> La tienda de la demo es de ejemplo. Lo que busques o pongas en el carrito se queda en tu navegador y se borra al cerrar o recargar la página. No se envía a ningún sitio.</li>
 		<li><b>Correo.</b> Si nos escribes, usaremos tu correo solo para responderte.</li>
@@ -100,7 +99,7 @@ footer a { color: var(--white); }
 		<li>Los datos de tus clientes y pedidos los guarda WooCommerce <b>solo en tu WordPress</b>. El tema no los envía a ningún sitio y nosotros no los recibimos.</li>
 		<li>La búsqueda en vivo consulta tu propia web. No pasa por ningún servicio externo.</li>
 		<li>Para avisarte de versiones nuevas, el tema pregunta a GitHub cuál es la última versión. No envía datos de la tienda ni de los clientes.</li>
-		<li>El tema carga la letra Inter desde Google Fonts, así que el navegador de tus clientes se conecta a Google para descargarla. Tenlo en cuenta en tu política de privacidad.</li>
+		<li>La letra Inter va incluida en el tema (desde la versión 1.0.2), así que el navegador de tus clientes no se conecta a Google Fonts ni a ningún otro servicio para mostrarla.</li>
 		<li>El tema no crea cookies propias. Las de WooCommerce y las de los plugins que instales siguen sus propias reglas.</li>
 		<li>Cada tienda que lo instala es responsable de su propia política de privacidad ante sus clientes.</li>
 	</ul>
@@ -126,7 +125,7 @@ footer a { color: var(--white); }
 		<li><b>No cookies.</b> We only remember the language you choose (ES or EN), stored in your own browser. No cookie notice is needed.</li>
 		<li><b>Visits.</b> We count visits with <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">GoatCounter</a>, which uses no cookies and does not store your IP address or anything that identifies you. We only see totals, such as visits, page and browser type.</li>
 		<li><b>Downloads.</b> The download count on the home page is requested from GitHub by your browser. That request carries none of your data.</li>
-		<li><b>Font.</b> The Inter typeface is loaded from Google Fonts, so your browser connects to Google to download it, as described in its <a href="https://policies.google.com/privacy?hl=en" target="_blank" rel="noopener noreferrer">privacy policy</a>.</li>
+		<li><b>Font.</b> The Inter typeface is included in the website itself. It is not downloaded from Google or any other service.</li>
 		<li><b>Hosting.</b> The website is hosted on GitHub Pages. Like any server, GitHub may log your IP address for security, as described in its <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">privacy statement</a>.</li>
 		<li><b>The demo.</b> The demo store is a sample. Whatever you search for or add to the cart stays in your browser and is cleared when you close or reload the page. It is not sent anywhere.</li>
 		<li><b>Email.</b> If you write to us, we will only use your email to reply.</li>
@@ -137,7 +136,7 @@ footer a { color: var(--white); }
 		<li>Customer and order data is stored by WooCommerce <b>only in your WordPress</b>. The theme does not send it anywhere and we never receive it.</li>
 		<li>Live search queries your own website. It does not go through any external service.</li>
 		<li>To tell you about new versions, the theme asks GitHub for the latest version. It sends no store or customer data.</li>
-		<li>The theme loads the Inter typeface from Google Fonts, so your customers' browsers connect to Google to download it. Keep this in mind in your privacy policy.</li>
+		<li>The Inter typeface is included in the theme (since version 1.0.2), so your customers' browsers do not connect to Google Fonts or any other service to display it.</li>
 		<li>The theme sets no cookies of its own. WooCommerce and any plugins you install follow their own rules.</li>
 		<li>Each store that installs it is responsible for its own privacy policy towards its customers.</li>
 	</ul>

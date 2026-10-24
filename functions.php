@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GMK_VERSION', '1.0.1' );
+define( 'GMK_VERSION', '1.0.2' );
 define( 'GMK_DIR', get_template_directory() );
 define( 'GMK_URI', get_template_directory_uri() );
 
@@ -17,6 +17,10 @@ add_action(
 	'after_setup_theme',
 	function () {
 		load_theme_textdomain( 'gmarket', GMK_DIR . '/languages' );
+		// Cualquier inglés (en_GB, en_CA…) sin traducción propia usa la de en_US.
+		if ( ! is_textdomain_loaded( 'gmarket' ) && 0 === strpos( determine_locale(), 'en_' ) ) {
+			load_textdomain( 'gmarket', GMK_DIR . '/languages/en_US.mo' );
+		}
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'responsive-embeds' );
@@ -47,10 +51,18 @@ add_action(
 	}
 );
 
+// La letra Inter va incluida en el tema (assets/fonts): se precarga para que no cambie al cargar.
+add_action(
+	'wp_head',
+	function () {
+		echo '<link rel="preload" href="' . esc_url( GMK_URI . '/assets/fonts/inter-latin.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+	},
+	1
+);
+
 add_action(
 	'wp_enqueue_scripts',
 	function () {
-		wp_enqueue_style( 'gmk-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap', array(), null );
 		wp_enqueue_style( 'gmk-main', GMK_URI . '/assets/css/main.css', array(), GMK_VERSION );
 		wp_add_inline_style( 'gmk-main', gmk_colors_css() );
 		wp_enqueue_script( 'gmk-main', GMK_URI . '/assets/js/main.js', array(), GMK_VERSION, true );
