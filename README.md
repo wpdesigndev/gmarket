@@ -61,7 +61,7 @@ El tema se actualiza solo desde este repositorio: cuando se publica una versión
 
 ## Soporte
 
-Escríbenos a **[gmarket@gmeti.com](mailto:gmarket@gmeti.com)** o abre un [issue](../../issues). Privacidad: [wpdesigndev.github.io/gmarket/privacidad](https://wpdesigndev.github.io/gmarket/privacidad/).
+Escríbenos a **[gmarket@gmeti.com](mailto:gmarket@gmeti.com)** o abre un [issue](../../issues). [Privacidad](https://wpdesigndev.github.io/gmarket/privacidad/) · [Aviso legal](https://wpdesigndev.github.io/gmarket/legal/).
 
 ## Licencia
 
@@ -83,6 +83,6 @@ GPLv2 o posterior (ver `LICENSE`). Iconos de pago: Font Awesome Free (CC BY 4.0)
 
 **Install:** download `gmarket.zip` from the [latest release](../../releases/latest), then *Appearance → Themes → Add New Theme → Upload Theme*, and install WooCommerce. Updates arrive automatically from this repository.
 
-**Demo:** [wpdesigndev.github.io/gmarket/demo](https://wpdesigndev.github.io/gmarket/demo/) · **Support:** [gmarket@gmeti.com](mailto:gmarket@gmeti.com) · [Privacy](https://wpdesigndev.github.io/gmarket/privacidad/#en)
+**Demo:** [wpdesigndev.github.io/gmarket/demo](https://wpdesigndev.github.io/gmarket/demo/) · **Support:** [gmarket@gmeti.com](mailto:gmarket@gmeti.com) · [Privacy](https://wpdesigndev.github.io/gmarket/privacidad/#en) · [Legal notice](https://wpdesigndev.github.io/gmarket/legal/#en)
 
 Developed by [GMETI](https://gmeti.com) · License: GPLv2 or later.
