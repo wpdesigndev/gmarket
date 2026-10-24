@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/img/logo.svg" alt="GMarket" width="110">
+  <img src="docs/img/logo-full.svg" alt="GMarket" width="200">
 </p>
 
 <h1 align="center">GMarket</h1>

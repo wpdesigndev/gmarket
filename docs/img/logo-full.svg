@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="137 278 951 689"><defs><linearGradient id="gmk-yl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd23f"/><stop offset="1" stop-color="#f0a500"/></linearGradient></defs>
+<path d="M790 357H1045Q1068 357 1062 380L1015 535Z" fill="url(#gmk-yl)"/>
+<path d="M495 495C545 410 625 355 720 355C810 355 890 400 945 468" fill="none" stroke="#fff" stroke-width="34"/>
+<path fill="#0b1e3a" d="M210 298H372Q410 298 428 338L493 492C545 410 625 355 720 355C810 355 890 400 945 468H705C640 470 582 525 582 600C582 670 640 720 720 720H760C820 720 860 680 870 637H685V553H1005L975 690C955 760 900 810 820 810H610C540 810 490 760 465 700L352 382Q342 365 322 365H210A33.5 33.5 0 0 1 210 298Z"/>
+<g fill="url(#gmk-yl)"><rect x="157" y="470" width="210" height="42" rx="21"/><rect x="234" y="552" width="164" height="40" rx="20"/><rect x="315" y="627" width="108" height="40" rx="20"/><circle cx="575" cy="885" r="62"/><circle cx="848" cy="885" r="62"/></g></svg>
