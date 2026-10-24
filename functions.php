@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GMK_VERSION', '1.0.0' );
+define( 'GMK_VERSION', '1.0.1' );
 define( 'GMK_DIR', get_template_directory() );
 define( 'GMK_URI', get_template_directory_uri() );
 

@@ -1002,3 +1002,13 @@ h1 { font-size: clamp(1.5rem, 2.6vw, 2rem); }
 .gmk-comments textarea, .gmk-comments input[type="text"], .gmk-comments input[type="email"], .gmk-comments input[type="url"] { width: 100%; padding: 10px 12px; border: 1px solid var(--gmk-line); border-radius: 8px; font: inherit; }
 .gmk-comments .submit { padding: 10px 20px; border: 0; border-radius: 999px; background: var(--gmk-yellow); color: var(--gmk-ink); font: inherit; font-weight: 700; cursor: pointer; }
 .gmk-comments .submit:hover { background: var(--gmk-yellow-dark); }
+
+/* ==========================================================================
+   Revisión 8 (1.0.1): botones de la tarjeta sin cortar el texto
+   Si «Añadir al carrito» y «Guardar» no caben en una fila, «Guardar» pasa debajo.
+   ========================================================================== */
+.gmk-card__actions { flex-wrap: wrap; }
+.woocommerce ul.products li.product .gmk-card__actions .button { flex: 1 0 auto; overflow: visible; text-overflow: clip; white-space: nowrap; }
+.woocommerce ul.products li.product .gmk-card__actions .yith-add-to-wishlist-button-block,
+.woocommerce ul.products li.product .gmk-card__actions .yith-wcwl-add-to-wishlist { flex: 1 0 auto; }
+.woocommerce ul.products li.product .gmk-card__actions .yith-wcwl-add-to-wishlist-button__label { overflow: visible; }
