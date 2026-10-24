@@ -59,7 +59,7 @@ Para otro idioma, abre la plantilla `languages/gmarket.pot` con Poedit (o usa Lo
 
 ## Actualizaciones
 
-El tema se actualiza solo desde este repositorio: cuando se publica una versión nueva, aparece el aviso en **Apariencia › Temas** y se actualiza con un clic. Solo consulta qué versión es la última (como mucho cada 6 horas); no envía datos de la tienda ni de los clientes.
+El tema se actualiza solo desde este repositorio: cuando se publica una versión nueva, aparece el aviso en **Apariencia › Temas** y se actualiza con un clic. Para que se actualice solo, en **Apariencia › Temas** pulsa en GMarket y elige **Activar actualizaciones automáticas**. Solo consulta qué versión es la última (como mucho cada 6 horas); no envía datos de la tienda ni de los clientes.
 
 ## Soporte
 
@@ -84,7 +84,7 @@ GPLv2 o posterior (ver `LICENSE`). Iconos de pago: Font Awesome Free (CC BY 4.0)
 - Works with Elementor Header & Footer Builder, TranslatePress and YITH WooCommerce Wishlist (all optional).
 - In **Spanish and English** (it follows your WordPress language), translation-ready (`languages/gmarket.pot`), with the Inter typeface included (no Google Fonts).
 
-**Install:** download `gmarket.zip` from the [latest release](../../releases/latest), then *Appearance → Themes → Add New Theme → Upload Theme*, and install WooCommerce. Updates arrive automatically from this repository.
+**Install:** download `gmarket.zip` from the [latest release](../../releases/latest), then *Appearance → Themes → Add New Theme → Upload Theme*, and install WooCommerce. Updates arrive from this repository: one click in *Appearance › Themes*, or turn on *Enable auto-updates* in the theme details to have it update by itself.
 
 **Demo:** [wpdesigndev.github.io/gmarket/demo](https://wpdesigndev.github.io/gmarket/demo/) · **Support:** [gmarket@gmeti.com](mailto:gmarket@gmeti.com) · [Privacy](https://wpdesigndev.github.io/gmarket/privacidad/#en) · [Legal notice](https://wpdesigndev.github.io/gmarket/legal/#en)
 
