@@ -12,6 +12,7 @@
 <p align="center">
   <a href="../../releases/latest"><strong>⬇ Descargar la última versión</strong></a>
   &nbsp;·&nbsp; <a href="https://wpdesigndev.github.io/gmarket/">🌐 Web del tema</a>
+  &nbsp;·&nbsp; <a href="https://wpdesigndev.github.io/gmarket/demo/">🛒 Demo</a>
   &nbsp;·&nbsp; <a href="#english">English</a>
   &nbsp;·&nbsp; Desarrollado por <a href="https://gmeti.com">GMETI</a>
 </p>
@@ -60,7 +61,7 @@ El tema se actualiza solo desde este repositorio: cuando se publica una versión
 
 ## Soporte
 
-Abre un [issue](../../issues).
+Escríbenos a **[gmarket@gmeti.com](mailto:gmarket@gmeti.com)** o abre un [issue](../../issues). Privacidad: [wpdesigndev.github.io/gmarket/privacidad](https://wpdesigndev.github.io/gmarket/privacidad/).
 
 ## Licencia
 
@@ -81,5 +82,7 @@ GPLv2 o posterior (ver `LICENSE`). Iconos de pago: Font Awesome Free (CC BY 4.0)
 - Works with Elementor Header & Footer Builder, TranslatePress and YITH WooCommerce Wishlist (all optional). Translation-ready (`languages/gmarket.pot`).
 
 **Install:** download `gmarket.zip` from the [latest release](../../releases/latest), then *Appearance → Themes → Add New Theme → Upload Theme*, and install WooCommerce. Updates arrive automatically from this repository.
+
+**Demo:** [wpdesigndev.github.io/gmarket/demo](https://wpdesigndev.github.io/gmarket/demo/) · **Support:** [gmarket@gmeti.com](mailto:gmarket@gmeti.com) · [Privacy](https://wpdesigndev.github.io/gmarket/privacidad/#en)
 
 Developed by [GMETI](https://gmeti.com) · License: GPLv2 or later.

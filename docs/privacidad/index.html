@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacidad · GMarket</title>
+<meta name="description" content="Qué datos recoge la web de GMarket y qué hace el tema con los datos de tu tienda.">
+<link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<meta name="theme-color" content="#0b1e3a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacidad · GMarket">
+<meta property="og:description" content="Qué datos recoge la web de GMarket y qué hace el tema con los datos de tu tienda.">
+<meta property="og:image" content="https://wpdesigndev.github.io/gmarket/img/social-preview.png">
+<meta property="og:url" content="https://wpdesigndev.github.io/gmarket/privacidad/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+	--deep: #0b1e3a; --blue: #0a4c9a; --green: #3a9a2a; --yellow: #ffd23f;
+	--ink: #0f1f36; --muted: #4f6380; --line: #d8e0ea; --bg: #eef2f6; --white: #ffffff;
+	--font: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.65; }
+a { color: var(--blue); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; border-radius: 8px; }
+.wrap { max-width: 1160px; margin: 0 auto; padding-inline: 20px; }
+.top { background: var(--deep); color: var(--white); position: sticky; top: 0; z-index: 10; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--white); text-decoration: none; font-weight: 800; font-size: 19px; letter-spacing: -.01em; min-width: 0; }
+.brand img { width: 38px; height: 38px; flex: none; }
+.brand-txt { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.brand-tag { font-weight: 500; font-size: 12.5px; color: #a9bcd8; letter-spacing: 0; }
+@media (max-width: 420px) { .brand-tag { font-size: 11px; } }
+.lang { display: flex; gap: 4px; background: rgba(255,255,255,.1); border-radius: 999px; padding: 4px; flex: none; }
+.lang button { border: 0; background: transparent; color: #d3deee; font: 700 14px var(--font); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+.lang button[aria-pressed="true"] { background: var(--white); color: var(--deep); }
+main { padding-block: 56px 72px; }
+.doc { max-width: 760px; margin: 0 auto; }
+.eyebrow { font-weight: 700; font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--green); margin: 0 0 10px; }
+h1 { font-weight: 800; font-size: clamp(32px, 5vw, 48px); line-height: 1.08; letter-spacing: -.025em; color: var(--deep); margin: 0 0 12px; }
+.date { color: var(--muted); font-size: 15px; margin: 0 0 32px; }
+.sum { background: var(--white); border: 1px solid var(--line); border-left: 5px solid var(--green); border-radius: 14px; padding: 20px 24px; margin-bottom: 36px; }
+.sum p { margin: 0; }
+h2 { font-weight: 700; font-size: 23px; color: var(--deep); margin: 38px 0 10px; line-height: 1.25; }
+ul { padding-left: 22px; margin: 10px 0; }
+li { margin: 6px 0; }
+.mail { font-weight: 600; color: var(--deep); }
+.back { display: inline-block; margin-top: 40px; font-weight: 700; text-decoration: none; }
+.back:hover { text-decoration: underline; }
+[hidden] { display: none !important; }
+footer { background: #07152a; color: #a9bcd8; font-size: 15px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; align-items: center; padding-block: 28px; }
+footer a { color: var(--white); }
+.by { display: flex; align-items: center; gap: 10px; }
+.by img { width: 26px; height: 26px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+	<div class="wrap">
+		<a class="brand" href="../"><img src="../img/logo.svg" alt=""><span class="brand-txt"><span>GMarket</span><span class="brand-tag" data-es="Tema de WordPress para tiendas WooCommerce" data-en="WordPress theme for WooCommerce stores">Tema de WordPress para tiendas WooCommerce</span></span></a>
+		<div class="lang" role="group" aria-label="Idioma / Language">
+			<button type="button" id="b-es" aria-pressed="true" lang="es">ES</button>
+			<button type="button" id="b-en" aria-pressed="false" lang="en">EN</button>
+		</div>
+	</div>
+</header>
+
+<main>
+<div class="wrap">
+
+<article class="doc" id="es" lang="es">
+	<p class="eyebrow">Privacidad</p>
+	<h1>Tu privacidad</h1>
+	<p class="date">Última actualización: 24 de octubre de 2026</p>
+
+	<div class="sum"><p><b>En resumen:</b> esta web no usa cookies, no te pide datos y no te rastrea. El tema no nos envía ningún dato de tu tienda ni de tus clientes.</p></div>
+
+	<h2>Quién está detrás</h2>
+	<p>GMarket es un tema gratuito de WordPress desarrollado por <a href="https://gmeti.com" target="_blank" rel="noopener noreferrer">GMETI LLC</a>. Para cualquier duda sobre privacidad, escríbenos a <a class="mail" href="mailto:gmarket@gmeti.com">gmarket@gmeti.com</a>.</p>
+
+	<h2>Esta web y la demo</h2>
+	<ul>
+		<li><b>Sin cookies.</b> Solo recordamos el idioma que eliges (ES o EN), guardado en tu propio navegador. No hace falta ningún aviso de cookies.</li>
+		<li><b>Visitas.</b> Contamos cuántas personas visitan la web con <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">GoatCounter</a>, que no usa cookies ni guarda tu dirección IP ni datos que te identifiquen. Solo vemos totales, como el número de visitas, la página y el tipo de navegador.</li>
+		<li><b>Descargas.</b> El número de descargas que ves en la portada se pide a GitHub desde tu navegador. Esa consulta no lleva datos tuyos.</li>
+		<li><b>Fuente.</b> La letra Inter se carga desde Google Fonts, así que tu navegador se conecta a Google para descargarla, según su <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener noreferrer">política de privacidad</a>.</li>
+		<li><b>Alojamiento.</b> La web está en GitHub Pages. Como cualquier servidor, GitHub puede registrar tu dirección IP por seguridad, según su <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">declaración de privacidad</a>.</li>
+		<li><b>La demo.</b> La tienda de la demo es de ejemplo. Lo que busques o pongas en el carrito se queda en tu navegador y se borra al cerrar o recargar la página. No se envía a ningún sitio.</li>
+		<li><b>Correo.</b> Si nos escribes, usaremos tu correo solo para responderte.</li>
+	</ul>
+
+	<h2>El tema en tu tienda</h2>
+	<ul>
+		<li>Los datos de tus clientes y pedidos los guarda WooCommerce <b>solo en tu WordPress</b>. El tema no los envía a ningún sitio y nosotros no los recibimos.</li>
+		<li>La búsqueda en vivo consulta tu propia web. No pasa por ningún servicio externo.</li>
+		<li>Para avisarte de versiones nuevas, el tema pregunta a GitHub cuál es la última versión. No envía datos de la tienda ni de los clientes.</li>
+		<li>El tema carga la letra Inter desde Google Fonts, así que el navegador de tus clientes se conecta a Google para descargarla. Tenlo en cuenta en tu política de privacidad.</li>
+		<li>El tema no crea cookies propias. Las de WooCommerce y las de los plugins que instales siguen sus propias reglas.</li>
+		<li>Cada tienda que lo instala es responsable de su propia política de privacidad ante sus clientes.</li>
+	</ul>
+
+	<h2>Cambios</h2>
+	<p>Si algo cambia, lo actualizaremos aquí con su nueva fecha.</p>
+
+	<a class="back" href="../">← Volver a GMarket</a>
+</article>
+
+<article class="doc" id="en" lang="en" hidden>
+	<p class="eyebrow">Privacy</p>
+	<h1>Your privacy</h1>
+	<p class="date">Last updated: October 24, 2026</p>
+
+	<div class="sum"><p><b>In short:</b> this website uses no cookies, asks for no data and does not track you. The theme never sends us any data from your store or your customers.</p></div>
+
+	<h2>Who is behind it</h2>
+	<p>GMarket is a free WordPress theme developed by <a href="https://gmeti.com" target="_blank" rel="noopener noreferrer">GMETI LLC</a>. For any privacy question, write to us at <a class="mail" href="mailto:gmarket@gmeti.com">gmarket@gmeti.com</a>.</p>
+
+	<h2>This website and the demo</h2>
+	<ul>
+		<li><b>No cookies.</b> We only remember the language you choose (ES or EN), stored in your own browser. No cookie notice is needed.</li>
+		<li><b>Visits.</b> We count visits with <a href="https://www.goatcounter.com/help/privacy" target="_blank" rel="noopener noreferrer">GoatCounter</a>, which uses no cookies and does not store your IP address or anything that identifies you. We only see totals, such as visits, page and browser type.</li>
+		<li><b>Downloads.</b> The download count on the home page is requested from GitHub by your browser. That request carries none of your data.</li>
+		<li><b>Font.</b> The Inter typeface is loaded from Google Fonts, so your browser connects to Google to download it, as described in its <a href="https://policies.google.com/privacy?hl=en" target="_blank" rel="noopener noreferrer">privacy policy</a>.</li>
+		<li><b>Hosting.</b> The website is hosted on GitHub Pages. Like any server, GitHub may log your IP address for security, as described in its <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">privacy statement</a>.</li>
+		<li><b>The demo.</b> The demo store is a sample. Whatever you search for or add to the cart stays in your browser and is cleared when you close or reload the page. It is not sent anywhere.</li>
+		<li><b>Email.</b> If you write to us, we will only use your email to reply.</li>
+	</ul>
+
+	<h2>The theme in your store</h2>
+	<ul>
+		<li>Customer and order data is stored by WooCommerce <b>only in your WordPress</b>. The theme does not send it anywhere and we never receive it.</li>
+		<li>Live search queries your own website. It does not go through any external service.</li>
+		<li>To tell you about new versions, the theme asks GitHub for the latest version. It sends no store or customer data.</li>
+		<li>The theme loads the Inter typeface from Google Fonts, so your customers' browsers connect to Google to download it. Keep this in mind in your privacy policy.</li>
+		<li>The theme sets no cookies of its own. WooCommerce and any plugins you install follow their own rules.</li>
+		<li>Each store that installs it is responsible for its own privacy policy towards its customers.</li>
+	</ul>
+
+	<h2>Changes</h2>
+	<p>If anything changes, we will update it here with a new date.</p>
+
+	<a class="back" href="../">← Back to GMarket</a>
+</article>
+
+</div>
+</main>
+
+<footer>
+	<div class="wrap">
+		<div class="by"><span data-es="Desarrollado por" data-en="Developed by">Desarrollado por</span> <img src="../img/gmeti-white.png" alt=""><a href="https://gmeti.com" target="_blank" rel="noopener noreferrer"><b>GMETI</b></a></div>
+		<div><span data-es="Soporte:" data-en="Support:">Soporte:</span> <a href="mailto:gmarket@gmeti.com">gmarket@gmeti.com</a></div>
+		<div><span data-es="Licencia" data-en="License">Licencia</span> GPLv2 · <a href="https://github.com/wpdesigndev/gmarket">GitHub</a></div>
+	</div>
+</footer>
+
+<script>
+(function () {
+	var es = document.getElementById('es'), en = document.getElementById('en');
+	var bes = document.getElementById('b-es'), ben = document.getElementById('b-en');
+	function set(l) {
+		var isEn = l === 'en';
+		en.hidden = !isEn; es.hidden = isEn;
+		bes.setAttribute('aria-pressed', String(!isEn)); ben.setAttribute('aria-pressed', String(isEn));
+		document.documentElement.lang = l;
+		document.title = isEn ? 'Privacy · GMarket' : 'Privacidad · GMarket';
+		document.querySelectorAll('[data-es]').forEach(function (n) { n.textContent = n.getAttribute(isEn ? 'data-en' : 'data-es'); });
+		try { localStorage.setItem('gmk-lang', l); } catch (e) {}
+	}
+	bes.addEventListener('click', function () { set('es'); });
+	ben.addEventListener('click', function () { set('en'); });
+	var saved = (function () { try { return localStorage.getItem('gmk-lang'); } catch (e) { return null; } })();
+	var nav = (navigator.language || '').toLowerCase();
+	set(location.hash === '#en' ? 'en' : location.hash === '#es' ? 'es' : saved ? saved : (nav !== '' && nav.indexOf('es') !== 0 ? 'en' : 'es'));
+})();
+</script>
+<script data-goatcounter="https://gmarket.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>

@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo · GMarket · Tema de WordPress para tiendas WooCommerce</title>
+<meta name="description" content="Prueba GMarket sin instalar nada: una tienda de ejemplo con buscador en vivo, menú de categorías, filtros con recuentos reales, ficha de producto y carrito.">
+<link rel="icon" href="../img/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<meta name="theme-color" content="#0b1e3a">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Demo · GMarket">
+<meta property="og:description" content="Pruébalo sin instalar nada: una tienda WooCommerce con GMarket, en tu navegador.">
+<meta property="og:image" content="https://wpdesigndev.github.io/gmarket/img/social-preview.png">
+<meta property="og:url" content="https://wpdesigndev.github.io/gmarket/demo/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- CSS real del tema (copia de assets/css/main.css) -->
+<link rel="stylesheet" href="gmarket.css">
+<style>
+/* Solo lo propio de la demo: barra de aviso, imágenes de ejemplo, portada y avisos */
+.mk-bar { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; padding: 9px var(--gmk-gutter); background: #07152a; color: #c9d6e8; font-size: 13.5px; }
+.mk-bar a { color: #fff; font-weight: 700; }
+.mk-bar .mk-dl { padding: 6px 14px; border-radius: 999px; background: var(--gmk-yellow); color: var(--gmk-blue-deep); text-decoration: none; }
+.mk-bar .mk-dl:hover { background: var(--gmk-yellow-dark); color: var(--gmk-blue-deep); }
+@media (max-width: 640px) { .mk-bar span { flex: 1 1 100%; order: 3; font-size: 12.5px; } }
+
+.mk-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: var(--gmk-blue-deep); white-space: nowrap; }
+.mk-logo:hover { text-decoration: none; color: var(--gmk-blue-deep); }
+.mk-logo i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 9px; background: linear-gradient(135deg, var(--gmk-blue-light), var(--gmk-green)); color: #fff; font-style: normal; font-size: 22px; }
+@media (max-width: 767px) { .mk-logo span { display: none; } .mk-logo i { width: 36px; height: 36px; font-size: 20px; } }
+.gmk-footer .mk-logo { color: #fff; }
+
+/* Imágenes de producto de ejemplo */
+.mk-img { font-style: normal; display: grid; place-items: center; width: 100%; aspect-ratio: 1; border-radius: 6px; font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif; font-size: clamp(40px, 6vw, 72px); line-height: 1; user-select: none; }
+.mk-c1 { background: #eef3fb; } .mk-c2 { background: #f3eff9; } .mk-c3 { background: #fbf0ef; } .mk-c4 { background: #f9f5ec; } .mk-c5 { background: #edf6ef; }
+.woocommerce ul.products li.product .mk-img { margin: 0 0 12px; }
+.gmk-tile__grid .mk-img { font-size: clamp(36px, 4.4vw, 60px); }
+.gmk-row__img .mk-img { font-size: 56px; background: transparent; }
+.gmk-cats__img .mk-img { font-size: 52px; background: transparent; }
+.gmk-suggest__item .mk-img { width: 46px; height: 46px; font-size: 28px; flex: none; }
+.gmk-product-page div.images .mk-img { font-size: clamp(110px, 20vw, 220px); border-radius: 10px; }
+.mk-cart-img { width: 64px; font-size: 34px; }
+
+.mk-stars { display: inline-block; font-size: 14px; letter-spacing: 1px; background: linear-gradient(90deg, #f5a623 calc(var(--r) / 5 * 100%), #cfd6de 0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.mk-rating { display: flex; align-items: center; gap: 6px; margin: 0 0 6px; font-size: 13px; color: var(--gmk-muted); }
+.woocommerce ul.products li.product .woocommerce-loop-product__title { font-family: inherit; }
+
+/* Portada de ejemplo (en una tienda real se hace con Elementor o con bloques) */
+.mk-hero { color: #fff; background: radial-gradient(120% 140% at 85% 100%, #1d7a3a 0%, rgba(29,122,58,0) 45%), linear-gradient(115deg, #0b1e3a 0%, #0a3a7a 55%, #0b4c9a 75%, #145c6a 100%); padding: 48px 0 140px; }
+.mk-hero__in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 48px; align-items: center; }
+.mk-hero h1 { color: #fff; font-size: clamp(30px, 4vw, 44px); line-height: 1.17; font-weight: 700; margin: 18px 0 14px; letter-spacing: -.3px; }
+.mk-hero p { font-size: 17px; line-height: 1.55; color: #e6edf7; margin: 0 0 22px; max-width: 610px; }
+.mk-hero .gmk-online { font-size: 13px; color: #fff; }
+.mk-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+.mk-btn { display: inline-block; padding: 14px 24px; border-radius: 999px; font-weight: 700; font-size: 15px; }
+.mk-btn:hover { text-decoration: none; filter: brightness(.95); }
+.mk-btn--y { background: var(--gmk-yellow); color: var(--gmk-ink); }
+.mk-btn--y:hover { color: var(--gmk-ink); }
+.mk-btn--g { background: rgba(255,255,255,.15); color: #fff; }
+.mk-btn--g:hover { color: #fff; }
+.mk-easy { background: #fff; color: var(--gmk-text); border-radius: 14px; padding: 24px 26px 22px; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.mk-easy h3 { color: var(--gmk-blue); font-size: 20px; margin: 0 0 14px; }
+.mk-easy ol { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 2.05; }
+.mk-easy small { display: block; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--gmk-line); color: var(--gmk-muted); font-size: 12.5px; }
+.mk-home { display: grid; gap: 22px; margin-top: -118px; padding-bottom: 48px; }
+.mk-home h2.mk-h { margin: 6px 0 -6px; font-size: 21px; }
+@media (max-width: 900px) { .mk-hero__in { grid-template-columns: minmax(0, 1fr); } .mk-easy { display: none; } .mk-hero { padding-bottom: 130px; } }
+
+/* Carrito */
+.mk-cart { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; align-items: start; }
+.mk-cart table { width: 100%; border-collapse: collapse; }
+.mk-cart th, .mk-cart td { padding: 12px 10px; border-bottom: 1px solid var(--gmk-line); text-align: left; vertical-align: middle; }
+.mk-cart th { font-size: 13px; color: var(--gmk-muted); font-weight: 600; }
+.mk-cart td a.mk-name { color: var(--gmk-ink); font-weight: 600; }
+.mk-cart .qty { width: 64px; height: 38px; padding: 0 8px; border: 1px solid #c3ccd6; border-radius: 8px; font: inherit; }
+.mk-rm { border: 0; background: none; color: var(--gmk-muted); font-size: 20px; cursor: pointer; line-height: 1; }
+.mk-rm:hover { color: var(--gmk-red); }
+.mk-totals { padding: 20px; border: 1px solid var(--gmk-line); border-radius: 10px; }
+.mk-totals h2 { font-size: 1.2rem; }
+.mk-totals p { display: flex; justify-content: space-between; margin: 0 0 10px; }
+.mk-totals p.mk-sum { padding-top: 10px; border-top: 1px solid var(--gmk-line); font-size: 18px; font-weight: 700; color: var(--gmk-ink); }
+.mk-totals .gmk-btn { width: 100%; margin-top: 8px; background: var(--gmk-yellow); color: var(--gmk-ink) !important; font-size: 16px; }
+@media (max-width: 900px) { .mk-cart { grid-template-columns: minmax(0, 1fr); } .mk-cart .mk-hide-sm { display: none; } }
+
+/* Ficha: pestañas, relacionados y valoraciones de ejemplo (en la tienda real lo pone la hoja de estilos de WooCommerce) */
+.woocommerce div.product .woocommerce-tabs ul.tabs { display: flex; flex-wrap: wrap; list-style: none; }
+.woocommerce div.product .woocommerce-tabs ul.tabs li a { display: inline-block; }
+.woocommerce .related ul.products { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1199px) { .woocommerce .related ul.products { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 767px) { .woocommerce .related ul.products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.mk-review { padding: 14px 0; border-bottom: 1px solid var(--gmk-line); }
+.mk-review strong { color: var(--gmk-ink); }
+.woocommerce div.product p.stock.out-of-stock { color: var(--gmk-red); font-weight: 700; font-size: 17px; }
+.woocommerce div.product form.cart .button:disabled { background: #c3ccd6; cursor: not-allowed; }
+
+/* Aviso flotante */
+.mk-toast { position: fixed; left: 50%; bottom: 24px; z-index: 300; display: flex; align-items: center; gap: 14px; max-width: min(560px, calc(100vw - 32px)); padding: 12px 16px; border-radius: 12px; background: var(--gmk-blue-deep); color: #fff; font-size: 14px; box-shadow: 0 12px 32px rgba(0,0,0,.3); transform: translate(-50%, 20px); opacity: 0; visibility: hidden; transition: transform .2s, opacity .2s, visibility .2s; }
+.mk-toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
+.mk-toast a { color: var(--gmk-yellow); font-weight: 700; white-space: nowrap; }
+.woocommerce .woocommerce-info { padding: 14px 18px; border-top: 3px solid var(--gmk-green); }
+</style>
+</head>
+<body class="woocommerce-page">
+
+<div class="mk-bar">
+	<a href="../" data-i="back"></a>
+	<span data-i="note"></span>
+	<a class="mk-dl" href="https://github.com/wpdesigndev/gmarket/releases/latest/download/gmarket.zip" data-i="dl"></a>
+</div>
+<span id="arriba"></span>
+
+<header class="gmk-header">
+	<div class="gmk-header__main">
+		<button class="gmk-header__burger" type="button" data-gmk-drawer="open" data-i-aria="openMenu"><svg class="gmk-icon gmk-icon--menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+		<div class="gmk-logo"><a class="mk-logo" href="#/"><i>M</i><span data-i="store"></span></a></div>
+		<span class="gmk-deliver"><svg class="gmk-icon gmk-icon--pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg><span><small data-i="deliverSmall"></small><strong data-i="deliver"></strong></span></span>
+		<div class="gmk-header__search">
+			<form role="search" class="gmk-search" autocomplete="off">
+				<select id="gmk-search-cat" name="product_cat" class="gmk-search__cat" tabindex="-1" aria-hidden="true"></select>
+				<div class="gmk-picker">
+					<button type="button" class="gmk-picker__btn" aria-haspopup="listbox" aria-expanded="false" data-i-aria="searchIn">
+						<span class="gmk-picker__label"></span>
+						<svg class="gmk-picker__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</button>
+					<ul class="gmk-menu-pop gmk-picker__menu" role="listbox" hidden></ul>
+				</div>
+				<label class="screen-reader-text" for="gmk-search-q" data-i="searchProducts"></label>
+				<input id="gmk-search-q" class="gmk-search__input" type="search" name="s">
+				<button class="gmk-search__btn" type="submit" data-i-aria="search"><svg class="gmk-icon gmk-icon--search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 21l-4.35-4.35M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14z"/></svg></button>
+				<div class="gmk-suggest" hidden></div>
+			</form>
+		</div>
+		<nav class="gmk-lang gmk-lang--header" aria-label="Idioma / Language"><a href="#" data-lang="es" hreflang="es" lang="es">ES</a><a href="#" data-lang="en" hreflang="en" lang="en">EN</a></nav>
+		<a class="gmk-hlink gmk-hlink--account" href="#/cuenta"><svg class="gmk-icon gmk-icon--user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span><small data-i="hello"></small><strong data-i="account"></strong></span></a>
+		<a class="gmk-hlink gmk-hlink--orders" href="#/cuenta"><span><small data-i="ordersSmall"></small><strong data-i="orders"></strong></span></a>
+		<a class="gmk-cart" href="#/carrito"><span class="gmk-cart__icon"><svg class="gmk-icon gmk-icon--cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.4 11.2a2 2 0 0 0 2 1.6h8.4a2 2 0 0 0 2-1.5L22 7H6"/></svg><span class="gmk-cart__count">0</span></span><strong data-i="cart"></strong></a>
+	</div>
+	<nav class="gmk-nav" data-i-aria="categories">
+		<div class="gmk-nav__inner">
+			<button class="gmk-nav__all" type="button" data-gmk-drawer="open"><svg class="gmk-icon gmk-icon--menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg> <span data-i="all"></span></button>
+			<ul class="gmk-nav__list" id="navlist"></ul>
+			<div class="gmk-nav__more" hidden><button type="button" class="gmk-nav__more-btn" aria-haspopup="true" aria-expanded="false"><span data-i="more"></span> <svg class="gmk-icon gmk-icon--chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button><ul class="gmk-menu-pop gmk-nav__more-list" hidden></ul></div>
+		</div>
+		<span class="gmk-nav__promo"><svg class="gmk-icon gmk-icon--globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg> <span data-i="promo"></span></span>
+	</nav>
+</header>
+
+<main id="contenido" class="gmk-main"></main>
+
+<footer class="gmk-footer">
+	<a class="gmk-footer__top" href="#arriba" id="ft-top" data-i="toTop"></a>
+	<div class="gmk-footer__trust" style="--gmk-n: 4">
+		<div><svg class="gmk-icon gmk-icon--globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg><span><strong data-i="ft1t"></strong><span data-i="ft1"></span></span></div>
+		<div><svg class="gmk-icon gmk-icon--truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg><span><strong data-i="ft2t"></strong><span data-i="ft2"></span></span></div>
+		<div><svg class="gmk-icon gmk-icon--shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><span><strong data-i="ft3t"></strong><span data-i="ft3"></span></span></div>
+		<div><svg class="gmk-icon gmk-icon--mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><strong data-i="ft4t"></strong><a href="mailto:gmarket@gmeti.com">gmarket@gmeti.com</a></span></div>
+	</div>
+	<div class="gmk-footer__cols" style="--gmk-n: 4">
+		<div class="gmk-footer__col gmk-footer__col--brand">
+			<a class="mk-logo" href="#/"><i>M</i><span data-i="store"></span></a>
+			<p data-i="about"></p>
+			<a class="gmk-footer__mail" href="mailto:gmarket@gmeti.com"><svg class="gmk-icon gmk-icon--mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> gmarket@gmeti.com</a>
+		</div>
+		<div class="gmk-footer__col"><h4 data-i="col1"></h4><ul><li><a href="#/demo" data-i="l_about"></a></li><li><a href="#/demo" data-i="l_blog"></a></li><li><a href="#/demo" data-i="l_work"></a></li></ul></div>
+		<div class="gmk-footer__col"><h4 data-i="col2"></h4><ul><li><a href="#/cuenta" data-i="l_account"></a></li><li><a href="#/demo" data-i="l_ship"></a></li><li><a href="#/demo" data-i="l_returns"></a></li><li><a href="mailto:gmarket@gmeti.com" data-i="l_contact"></a></li></ul></div>
+		<div class="gmk-footer__col"><h4 data-i="col3"></h4><ul><li><a href="../privacidad/" data-i="l_privacy"></a></li><li><a href="#/demo" data-i="l_terms"></a></li><li><a href="#/demo" data-i="l_cookies"></a></li></ul></div>
+		<div class="gmk-footer__col"><h4 data-i="col4"></h4><ul id="ft-cats"></ul></div>
+	</div>
+	<div class="gmk-footer__bottom">
+		<ul class="gmk-pay" aria-label="Métodos de pago aceptados" data-t-aria="pay"><li class="gmk-pay__cc-visa" title="Visa"><svg viewBox="0 0 576 512" role="img" aria-label="Visa"><path fill="currentColor" d="M470.1 231.3s7.6 37.2 9.3 45H446c3.3-8.9 16-43.5 16-43.5-.2.3 3.3-9.1 5.3-14.9l2.8 13.4zM576 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h480c26.5 0 48 21.5 48 48zM152.5 331.2L215.7 176h-42.5l-39.3 106-4.3-21.5-14-71.4c-2.3-9.9-9.4-12.7-18.2-13.1H32.7l-.7 3.1c15.8 4 29.9 9.8 42.2 17.1l35.8 135h42.5zm94.4.2L272.1 176h-40.2l-25.1 155.4h40.1zm139.9-50.8c.2-17.7-10.6-31.2-33.7-42.3-14.1-7.1-22.7-11.9-22.7-19.2.2-6.6 7.3-13.4 23.1-13.4 13.1-.3 22.7 2.8 29.9 5.9l3.6 1.7 5.5-33.6c-7.9-3.1-20.5-6.6-36-6.6-39.7 0-67.6 21.2-67.8 51.4-.3 22.3 20 34.7 35.2 42.2 15.5 7.6 20.8 12.6 20.8 19.3-.2 10.4-12.6 15.2-24.1 15.2-16 0-24.6-2.5-37.7-8.3l-5.3-2.5-5.6 34.9c9.4 4.3 26.8 8.1 44.8 8.3 42.2.1 69.7-20.8 70-53zM528 331.4L495.6 176h-31.1c-9.6 0-16.9 2.8-21 12.9l-59.7 142.5H426s6.9-19.2 8.4-23.3H486c1.2 5.5 4.8 23.3 4.8 23.3H528z"/></svg></li><li class="gmk-pay__cc-mastercard" title="Mastercard"><svg viewBox="0 0 576 512" role="img" aria-label="Mastercard"><path fill="currentColor" d="M482.9 410.3c0 6.8-4.6 11.7-11.2 11.7-6.8 0-11.2-5.2-11.2-11.7 0-6.5 4.4-11.7 11.2-11.7 6.6 0 11.2 5.2 11.2 11.7zm-310.8-11.7c-7.1 0-11.2 5.2-11.2 11.7 0 6.5 4.1 11.7 11.2 11.7 6.5 0 10.9-4.9 10.9-11.7-.1-6.5-4.4-11.7-10.9-11.7zm117.5-.3c-5.4 0-8.7 3.5-9.5 8.7h19.1c-.9-5.7-4.4-8.7-9.6-8.7zm107.8.3c-6.8 0-10.9 5.2-10.9 11.7 0 6.5 4.1 11.7 10.9 11.7 6.8 0 11.2-4.9 11.2-11.7 0-6.5-4.4-11.7-11.2-11.7zm105.9 26.1c0 .3.3.5.3 1.1 0 .3-.3.5-.3 1.1-.3.3-.3.5-.5.8-.3.3-.5.5-1.1.5-.3.3-.5.3-1.1.3-.3 0-.5 0-1.1-.3-.3 0-.5-.3-.8-.5-.3-.3-.5-.5-.5-.8-.3-.5-.3-.8-.3-1.1 0-.5 0-.8.3-1.1 0-.5.3-.8.5-1.1.3-.3.5-.3.8-.5.5-.3.8-.3 1.1-.3.5 0 .8 0 1.1.3.5.3.8.3 1.1.5s.2.6.5 1.1zm-2.2 1.4c.5 0 .5-.3.8-.3.3-.3.3-.5.3-.8 0-.3 0-.5-.3-.8-.3 0-.5-.3-1.1-.3h-1.6v3.5h.8V426h.3l1.1 1.4h.8l-1.1-1.3zM576 81v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V81c0-26.5 21.5-48 48-48h480c26.5 0 48 21.5 48 48zM64 220.6c0 76.5 62.1 138.5 138.5 138.5 27.2 0 53.9-8.2 76.5-23.1-72.9-59.3-72.4-171.2 0-230.5-22.6-15-49.3-23.1-76.5-23.1-76.4-.1-138.5 62-138.5 138.2zm224 108.8c70.5-55 70.2-162.2 0-217.5-70.2 55.3-70.5 162.6 0 217.5zm-142.3 76.3c0-8.7-5.7-14.4-14.7-14.7-4.6 0-9.5 1.4-12.8 6.5-2.4-4.1-6.5-6.5-12.2-6.5-3.8 0-7.6 1.4-10.6 5.4V392h-8.2v36.7h8.2c0-18.9-2.5-30.2 9-30.2 10.2 0 8.2 10.2 8.2 30.2h7.9c0-18.3-2.5-30.2 9-30.2 10.2 0 8.2 10 8.2 30.2h8.2v-23zm44.9-13.7h-7.9v4.4c-2.7-3.3-6.5-5.4-11.7-5.4-10.3 0-18.2 8.2-18.2 19.3 0 11.2 7.9 19.3 18.2 19.3 5.2 0 9-1.9 11.7-5.4v4.6h7.9V392zm40.5 25.6c0-15-22.9-8.2-22.9-15.2 0-5.7 11.9-4.8 18.5-1.1l3.3-6.5c-9.4-6.1-30.2-6-30.2 8.2 0 14.3 22.9 8.3 22.9 15 0 6.3-13.5 5.8-20.7.8l-3.5 6.3c11.2 7.6 32.6 6 32.6-7.5zm35.4 9.3l-2.2-6.8c-3.8 2.1-12.2 4.4-12.2-4.1v-16.6h13.1V392h-13.1v-11.2h-8.2V392h-7.6v7.3h7.6V416c0 17.6 17.3 14.4 22.6 10.9zm13.3-13.4h27.5c0-16.2-7.4-22.6-17.4-22.6-10.6 0-18.2 7.9-18.2 19.3 0 20.5 22.6 23.9 33.8 14.2l-3.8-6c-7.8 6.4-19.6 5.8-21.9-4.9zm59.1-21.5c-4.6-2-11.6-1.8-15.2 4.4V392h-8.2v36.7h8.2V408c0-11.6 9.5-10.1 12.8-8.4l2.4-7.6zm10.6 18.3c0-11.4 11.6-15.1 20.7-8.4l3.8-6.5c-11.6-9.1-32.7-4.1-32.7 15 0 19.8 22.4 23.8 32.7 15l-3.8-6.5c-9.2 6.5-20.7 2.6-20.7-8.6zm66.7-18.3H408v4.4c-8.3-11-29.9-4.8-29.9 13.9 0 19.2 22.4 24.7 29.9 13.9v4.6h8.2V392zm33.7 0c-2.4-1.2-11-2.9-15.2 4.4V392h-7.9v36.7h7.9V408c0-11 9-10.3 12.8-8.4l2.4-7.6zm40.3-14.9h-7.9v19.3c-8.2-10.9-29.9-5.1-29.9 13.9 0 19.4 22.5 24.6 29.9 13.9v4.6h7.9v-51.7zm7.6-75.1v4.6h.8V302h1.9v-.8h-4.6v.8h1.9zm6.6 123.8c0-.5 0-1.1-.3-1.6-.3-.3-.5-.8-.8-1.1-.3-.3-.8-.5-1.1-.8-.5 0-1.1-.3-1.6-.3-.3 0-.8.3-1.4.3-.5.3-.8.5-1.1.8-.5.3-.8.8-.8 1.1-.3.5-.3 1.1-.3 1.6 0 .3 0 .8.3 1.4 0 .3.3.8.8 1.1.3.3.5.5 1.1.8.5.3 1.1.3 1.4.3.5 0 1.1 0 1.6-.3.3-.3.8-.5 1.1-.8.3-.3.5-.8.8-1.1.3-.6.3-1.1.3-1.4zm3.2-124.7h-1.4l-1.6 3.5-1.6-3.5h-1.4v5.4h.8v-4.1l1.6 3.5h1.1l1.4-3.5v4.1h1.1v-5.4zm4.4-80.5c0-76.2-62.1-138.3-138.5-138.3-27.2 0-53.9 8.2-76.5 23.1 72.1 59.3 73.2 171.5 0 230.5 22.6 15 49.5 23.1 76.5 23.1 76.4.1 138.5-61.9 138.5-138.4z"/></svg></li><li class="gmk-pay__cc-amex" title="American Express"><svg viewBox="0 0 576 512" role="img" aria-label="American Express"><path fill="currentColor" d="M325.1 167.8c0-16.4-14.1-18.4-27.4-18.4l-39.1-.3v69.3H275v-25.1h18c18.4 0 14.5 10.3 14.8 25.1h16.6v-13.5c0-9.2-1.5-15.1-11-18.4 7.4-3 11.8-10.7 11.7-18.7zm-29.4 11.3H275v-15.3h21c5.1 0 10.7 1 10.7 7.4 0 6.6-5.3 7.9-11 7.9zM279 268.6h-52.7l-21 22.8-20.5-22.8h-66.5l-.1 69.3h65.4l21.3-23 20.4 23h32.2l.1-23.3c18.9 0 49.3 4.6 49.3-23.3 0-17.3-12.3-22.7-27.9-22.7zm-103.8 54.7h-40.6v-13.8h36.3v-14.1h-36.3v-12.5h41.7l17.9 20.2zm65.8 8.2l-25.3-28.1L241 276zm37.8-31h-21.2v-17.6h21.5c5.6 0 10.2 2.3 10.2 8.4 0 6.4-4.6 9.2-10.5 9.2zm-31.6-136.7v-14.6h-55.5v69.3h55.5v-14.3h-38.9v-13.8h37.8v-14.1h-37.8v-12.5zM576 255.4h-.2zm-194.6 31.9c0-16.4-14.1-18.7-27.1-18.7h-39.4l-.1 69.3h16.6l.1-25.3h17.6c11 0 14.8 2 14.8 13.8l-.1 11.5h16.6l.1-13.8c0-8.9-1.8-15.1-11-18.4 7.7-3.1 11.8-10.8 11.9-18.4zm-29.2 11.2h-20.7v-15.6h21c5.1 0 10.7 1 10.7 7.4 0 6.9-5.4 8.2-11 8.2zm-172.8-80v-69.3h-27.6l-19.7 47-21.7-47H83.3v65.7l-28.1-65.7H30.7L1 218.5h17.9l6.4-15.3h34.5l6.4 15.3H100v-54.2l24 54.2h14.6l24-54.2v54.2zM31.2 188.8l11.2-27.6 11.5 27.6zm477.4 158.9v-4.5c-10.8 5.6-3.9 4.5-156.7 4.5 0-25.2.1-23.9 0-25.2-1.7-.1-3.2-.1-9.4-.1 0 17.9-.1 6.8-.1 25.3h-39.6c0-12.1.1-15.3.1-29.2-10 6-22.8 6.4-34.3 6.2 0 14.7-.1 8.3-.1 23h-48.9c-5.1-5.7-2.7-3.1-15.4-17.4-3.2 3.5-12.8 13.9-16.1 17.4h-82v-92.3h83.1c5 5.6 2.8 3.1 15.5 17.2 3.2-3.5 12.2-13.4 15.7-17.2h58c9.8 0 18 1.9 24.3 5.6v-5.6c54.3 0 64.3-1.4 75.7 5.1v-5.1h78.2v5.2c11.4-6.9 19.6-5.2 64.9-5.2v5c10.3-5.9 16.6-5.2 54.3-5V80c0-26.5-21.5-48-48-48h-480c-26.5 0-48 21.5-48 48v109.8c9.4-21.9 19.7-46 23.1-53.9h39.7c4.3 10.1 1.6 3.7 9 21.1v-21.1h46c2.9 6.2 11.1 24 13.9 30 5.8-13.6 10.1-23.9 12.6-30h103c0-.1 11.5 0 11.6 0 43.7.2 53.6-.8 64.4 5.3v-5.3H363v9.3c7.6-6.1 17.9-9.3 30.7-9.3h27.6c0 .5 1.9.3 2.3.3H456c4.2 9.8 2.6 6 8.8 20.6v-20.6h43.3c4.9 8-1-1.8 11.2 18.4v-18.4h39.9v92h-41.6c-5.4-9-1.4-2.2-13.2-21.9v21.9h-52.8c-6.4-14.8-.1-.3-6.6-15.3h-19c-4.2 10-2.2 5.2-6.4 15.3h-26.8c-12.3 0-22.3-3-29.7-8.9v8.9h-66.5c-.3-13.9-.1-24.8-.1-24.8-1.8-.3-3.4-.2-9.8-.2v25.1H151.2v-11.4c-2.5 5.6-2.7 5.9-5.1 11.4h-29.5c-4-8.9-2.9-6.4-5.1-11.4v11.4H58.6c-4.2-10.1-2.2-5.3-6.4-15.3H33c-4.2 10-2.2 5.2-6.4 15.3H0V432c0 26.5 21.5 48 48 48h480.1c26.5 0 48-21.5 48-48v-90.4c-12.7 8.3-32.7 6.1-67.5 6.1zm36.3-64.5H575v-14.6h-32.9c-12.8 0-23.8 6.6-23.8 20.7 0 33 42.7 12.8 42.7 27.4 0 5.1-4.3 6.4-8.4 6.4h-32l-.1 14.8h32c8.4 0 17.6-1.8 22.5-8.9v-25.8c-10.5-13.8-39.3-1.3-39.3-13.5 0-5.8 4.6-6.5 9.2-6.5zm-57 39.8h-32.2l-.1 14.8h32.2c14.8 0 26.2-5.6 26.2-22 0-33.2-42.9-11.2-42.9-26.3 0-5.6 4.9-6.4 9.2-6.4h30.4v-14.6h-33.2c-12.8 0-23.5 6.6-23.5 20.7 0 33 42.7 12.5 42.7 27.4-.1 5.4-4.7 6.4-8.8 6.4zm-42.2-40.1v-14.3h-55.2l-.1 69.3h55.2l.1-14.3-38.6-.3v-13.8H445v-14.1h-37.8v-12.5zm-56.3-108.1c-.3.2-1.4 2.2-1.4 7.6 0 6 .9 7.7 1.1 7.9.2.1 1.1.5 3.4.5l7.3-16.9c-1.1 0-2.1-.1-3.1-.1-5.6 0-7 .7-7.3 1zm20.4-10.5h-.1zm-16.2-15.2c-23.5 0-34 12-34 35.3 0 22.2 10.2 34 33 34h19.2l6.4-15.3h34.3l6.6 15.3h33.7v-51.9l31.2 51.9h23.6v-69h-16.9v48.1l-29.1-48.1h-25.3v65.4l-27.9-65.4h-24.8l-23.5 54.5h-7.4c-13.3 0-16.1-8.1-16.1-19.9 0-23.8 15.7-20 33.1-19.7v-15.2zm42.1 12.1l11.2 27.6h-22.8zm-101.1-12v69.3h16.9v-69.3z"/></svg></li><li class="gmk-pay__cc-discover" title="Discover"><svg viewBox="0 0 576 512" role="img" aria-label="Discover"><path fill="currentColor" d="M520.4 196.1c0-7.9-5.5-12.1-15.6-12.1h-4.9v24.9h4.7c10.3 0 15.8-4.4 15.8-12.8zM528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-44.1 138.9c22.6 0 52.9-4.1 52.9 24.4 0 12.6-6.6 20.7-18.7 23.2l25.8 34.4h-19.6l-22.2-32.8h-2.2v32.8h-16zm-55.9.1h45.3v14H444v18.2h28.3V217H444v22.2h29.3V253H428zm-68.7 0l21.9 55.2 22.2-55.2h17.5l-35.5 84.2h-8.6l-35-84.2zm-55.9-3c24.7 0 44.6 20 44.6 44.6 0 24.7-20 44.6-44.6 44.6-24.7 0-44.6-20-44.6-44.6 0-24.7 20-44.6 44.6-44.6zm-49.3 6.1v19c-20.1-20.1-46.8-4.7-46.8 19 0 25 27.5 38.5 46.8 19.2v19c-29.7 14.3-63.3-5.7-63.3-38.2 0-31.2 33.1-53 63.3-38zm-97.2 66.3c11.4 0 22.4-15.3-3.3-24.4-15-5.5-20.2-11.4-20.2-22.7 0-23.2 30.6-31.4 49.7-14.3l-8.4 10.8c-10.4-11.6-24.9-6.2-24.9 2.5 0 4.4 2.7 6.9 12.3 10.3 18.2 6.6 23.6 12.5 23.6 25.6 0 29.5-38.8 37.4-56.6 11.3l10.3-9.9c3.7 7.1 9.9 10.8 17.5 10.8zM55.4 253H32v-82h23.4c26.1 0 44.1 17 44.1 41.1 0 18.5-13.2 40.9-44.1 40.9zm67.5 0h-16v-82h16zM544 433c0 8.2-6.8 15-15 15H128c189.6-35.6 382.7-139.2 416-160zM74.1 191.6c-5.2-4.9-11.6-6.6-21.9-6.6H48v54.2h4.2c10.3 0 17-2 21.9-6.4 5.7-5.2 8.9-12.8 8.9-20.7s-3.2-15.5-8.9-20.5z"/></svg></li><li class="gmk-pay__cc-paypal" title="PayPal"><svg viewBox="0 0 576 512" role="img" aria-label="PayPal"><path fill="currentColor" d="M186.3 258.2c0 12.2-9.7 21.5-22 21.5-9.2 0-16-5.2-16-15 0-12.2 9.5-22 21.7-22 9.3 0 16.3 5.7 16.3 15.5zM80.5 209.7h-4.7c-1.5 0-3 1-3.2 2.7l-4.3 26.7 8.2-.3c11 0 19.5-1.5 21.5-14.2 2.3-13.4-6.2-14.9-17.5-14.9zm284 0H360c-1.8 0-3 1-3.2 2.7l-4.2 26.7 8-.3c13 0 22-3 22-18-.1-10.6-9.6-11.1-18.1-11.1zM576 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h480c26.5 0 48 21.5 48 48zM128.3 215.4c0-21-16.2-28-34.7-28h-40c-2.5 0-5 2-5.2 4.7L32 294.2c-.3 2 1.2 4 3.2 4h19c2.7 0 5.2-2.9 5.5-5.7l4.5-26.6c1-7.2 13.2-4.7 18-4.7 28.6 0 46.1-17 46.1-45.8zm84.2 8.8h-19c-3.8 0-4 5.5-4.2 8.2-5.8-8.5-14.2-10-23.7-10-24.5 0-43.2 21.5-43.2 45.2 0 19.5 12.2 32.2 31.7 32.2 9 0 20.2-4.9 26.5-11.9-.5 1.5-1 4.7-1 6.2 0 2.3 1 4 3.2 4H200c2.7 0 5-2.9 5.5-5.7l10.2-64.3c.3-1.9-1.2-3.9-3.2-3.9zm40.5 97.9l63.7-92.6c.5-.5.5-1 .5-1.7 0-1.7-1.5-3.5-3.2-3.5h-19.2c-1.7 0-3.5 1-4.5 2.5l-26.5 39-11-37.5c-.8-2.2-3-4-5.5-4h-18.7c-1.7 0-3.2 1.8-3.2 3.5 0 1.2 19.5 56.8 21.2 62.1-2.7 3.8-20.5 28.6-20.5 31.6 0 1.8 1.5 3.2 3.2 3.2h19.2c1.8-.1 3.5-1.1 4.5-2.6zm159.3-106.7c0-21-16.2-28-34.7-28h-39.7c-2.7 0-5.2 2-5.5 4.7l-16.2 102c-.2 2 1.3 4 3.2 4h20.5c2 0 3.5-1.5 4-3.2l4.5-29c1-7.2 13.2-4.7 18-4.7 28.4 0 45.9-17 45.9-45.8zm84.2 8.8h-19c-3.8 0-4 5.5-4.3 8.2-5.5-8.5-14-10-23.7-10-24.5 0-43.2 21.5-43.2 45.2 0 19.5 12.2 32.2 31.7 32.2 9.3 0 20.5-4.9 26.5-11.9-.3 1.5-1 4.7-1 6.2 0 2.3 1 4 3.2 4H484c2.7 0 5-2.9 5.5-5.7l10.2-64.3c.3-1.9-1.2-3.9-3.2-3.9zm47.5-33.3c0-2-1.5-3.5-3.2-3.5h-18.5c-1.5 0-3 1.2-3.2 2.7l-16.2 104-.3.5c0 1.8 1.5 3.5 3.5 3.5h16.5c2.5 0 5-2.9 5.2-5.7L544 191.2v-.3zm-90 51.8c-12.2 0-21.7 9.7-21.7 22 0 9.7 7 15 16.2 15 12 0 21.7-9.2 21.7-21.5.1-9.8-6.9-15.5-16.2-15.5z"/></svg></li><li class="gmk-pay__cc-stripe" title="Stripe"><svg viewBox="0 0 576 512" role="img" aria-label="Stripe"><path fill="currentColor" d="M492.4 220.8c-8.9 0-18.7 6.7-18.7 22.7h36.7c0-16-9.3-22.7-18-22.7zM375 223.4c-8.2 0-13.3 2.9-17 7l.2 52.8c3.5 3.7 8.5 6.7 16.8 6.7 13.1 0 21.9-14.3 21.9-33.4 0-18.6-9-33.2-21.9-33.1zM528 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h480c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM122.2 281.1c0 25.6-20.3 40.1-49.9 40.3-12.2 0-25.6-2.4-38.8-8.1v-33.9c12 6.4 27.1 11.3 38.9 11.3 7.9 0 13.6-2.1 13.6-8.7 0-17-54-10.6-54-49.9 0-25.2 19.2-40.2 48-40.2 11.8 0 23.5 1.8 35.3 6.5v33.4c-10.8-5.8-24.5-9.1-35.3-9.1-7.5 0-12.1 2.2-12.1 7.7 0 16 54.3 8.4 54.3 50.7zm68.8-56.6h-27V275c0 20.9 22.5 14.4 27 12.6v28.9c-4.7 2.6-13.3 4.7-24.9 4.7-21.1 0-36.9-15.5-36.9-36.5l.2-113.9 34.7-7.4v30.8H191zm74 2.4c-4.5-1.5-18.7-3.6-27.1 7.4v84.4h-35.5V194.2h30.7l2.2 10.5c8.3-15.3 24.9-12.2 29.6-10.5h.1zm44.1 91.8h-35.7V194.2h35.7zm0-142.9l-35.7 7.6v-28.9l35.7-7.6zm74.1 145.5c-12.4 0-20-5.3-25.1-9l-.1 40.2-35.5 7.5V194.2h31.3l1.8 8.8c4.9-4.5 13.9-11.1 27.8-11.1 24.9 0 48.4 22.5 48.4 63.8 0 45.1-23.2 65.5-48.6 65.6zm160.4-51.5h-69.5c1.6 16.6 13.8 21.5 27.6 21.5 14.1 0 25.2-3 34.9-7.9V312c-9.7 5.3-22.4 9.2-39.4 9.2-34.6 0-58.8-21.7-58.8-64.5 0-36.2 20.5-64.9 54.3-64.9 33.7 0 51.3 28.7 51.3 65.1 0 3.5-.3 10.9-.4 12.9z"/></svg></li><li class="gmk-pay__cc-apple-pay" title="Apple Pay"><svg viewBox="0 0 576 512" role="img" aria-label="Apple Pay"><path fill="currentColor" d="M302.2 218.4c0 17.2-10.5 27.1-29 27.1h-24.3v-54.2h24.4c18.4 0 28.9 9.8 28.9 27.1zm47.5 62.6c0 8.3 7.2 13.7 18.5 13.7 14.4 0 25.2-9.1 25.2-21.9v-7.7l-23.5 1.5c-13.3.9-20.2 5.8-20.2 14.4zM576 79v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V79c0-26.5 21.5-48 48-48h480c26.5 0 48 21.5 48 48zM127.8 197.2c8.4.7 16.8-4.2 22.1-10.4 5.2-6.4 8.6-15 7.7-23.7-7.4.3-16.6 4.9-21.9 11.3-4.8 5.5-8.9 14.4-7.9 22.8zm60.6 74.5c-.2-.2-19.6-7.6-19.8-30-.2-18.7 15.3-27.7 16-28.2-8.8-13-22.4-14.4-27.1-14.7-12.2-.7-22.6 6.9-28.4 6.9-5.9 0-14.7-6.6-24.3-6.4-12.5.2-24.2 7.3-30.5 18.6-13.1 22.6-3.4 56 9.3 74.4 6.2 9.1 13.7 19.1 23.5 18.7 9.3-.4 13-6 24.2-6 11.3 0 14.5 6 24.3 5.9 10.2-.2 16.5-9.1 22.8-18.2 6.9-10.4 9.8-20.4 10-21zm135.4-53.4c0-26.6-18.5-44.8-44.9-44.8h-51.2v136.4h21.2v-46.6h29.3c26.8 0 45.6-18.4 45.6-45zm90 23.7c0-19.7-15.8-32.4-40-32.4-22.5 0-39.1 12.9-39.7 30.5h19.1c1.6-8.4 9.4-13.9 20-13.9 13 0 20.2 6 20.2 17.2v7.5l-26.4 1.6c-24.6 1.5-37.9 11.6-37.9 29.1 0 17.7 13.7 29.4 33.4 29.4 13.3 0 25.6-6.7 31.2-17.4h.4V310h19.6v-68zM516 210.9h-21.5l-24.9 80.6h-.4l-24.9-80.6H422l35.9 99.3-1.9 6c-3.2 10.2-8.5 14.2-17.9 14.2-1.7 0-4.9-.2-6.2-.3v16.4c1.2.4 6.5.5 8.1.5 20.7 0 30.4-7.9 38.9-31.8L516 210.9z"/></svg></li><li class="gmk-pay__google-pay" title="Google Pay"><svg viewBox="0 0 640 512" role="img" aria-label="Google Pay"><path fill="currentColor" d="M105.72,215v41.25h57.1a49.66,49.66,0,0,1-21.14,32.6c-9.54,6.55-21.72,10.28-36,10.28-27.6,0-50.93-18.91-59.3-44.22a65.61,65.61,0,0,1,0-41l0,0c8.37-25.46,31.7-44.37,59.3-44.37a56.43,56.43,0,0,1,40.51,16.08L176.47,155a101.24,101.24,0,0,0-70.75-27.84,105.55,105.55,0,0,0-94.38,59.11,107.64,107.64,0,0,0,0,96.18v.15a105.41,105.41,0,0,0,94.38,59c28.47,0,52.55-9.53,70-25.91,20-18.61,31.41-46.15,31.41-78.91A133.76,133.76,0,0,0,205.38,215Zm389.41-4c-10.13-9.38-23.93-14.14-41.39-14.14-22.46,0-39.34,8.34-50.5,24.86l20.85,13.26q11.45-17,31.26-17a34.05,34.05,0,0,1,22.75,8.79A28.14,28.14,0,0,1,487.79,248v5.51c-9.1-5.07-20.55-7.75-34.64-7.75-16.44,0-29.65,3.88-39.49,11.77s-14.82,18.31-14.82,31.56a39.74,39.74,0,0,0,13.94,31.27c9.25,8.34,21,12.51,34.79,12.51,16.29,0,29.21-7.3,39-21.89h1v17.72h22.61V250C510.25,233.45,505.26,220.34,495.13,211ZM475.9,300.3a37.32,37.32,0,0,1-26.57,11.16A28.61,28.61,0,0,1,431,305.21a19.41,19.41,0,0,1-7.77-15.63c0-7,3.22-12.81,9.54-17.42s14.53-7,24.07-7C470,265,480.3,268,487.64,273.94,487.64,284.07,483.68,292.85,475.9,300.3Zm-93.65-142A55.71,55.71,0,0,0,341.74,142H279.07V328.74H302.7V253.1h39c16,0,29.5-5.36,40.51-15.93.88-.89,1.76-1.79,2.65-2.68A54.45,54.45,0,0,0,382.25,158.26Zm-16.58,62.23a30.65,30.65,0,0,1-23.34,9.68H302.7V165h39.63a32,32,0,0,1,22.6,9.23A33.18,33.18,0,0,1,365.67,220.49ZM614.31,201,577.77,292.7h-.45L539.9,201H514.21L566,320.55l-29.35,64.32H561L640,201Z"/></svg></li></ul>
+		<p>&copy; <span id="year"></span> <span data-i="store"></span>. <span data-i="copy"></span></p>
+	</div>
+</footer>
+
+<div class="gmk-drawer" data-gmk-drawer-panel hidden>
+	<div class="gmk-drawer__overlay" data-gmk-drawer="close"></div>
+	<aside class="gmk-drawer__panel" data-i-aria="menu">
+		<div class="gmk-drawer__head">
+			<svg class="gmk-icon gmk-icon--user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+			<a href="#/cuenta" data-gmk-drawer="close" data-i="hello"></a>
+			<button type="button" class="gmk-drawer__close" data-gmk-drawer="close" data-i-aria="close"><svg class="gmk-icon gmk-icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+		</div>
+		<div class="gmk-drawer__body">
+			<h4 data-i="drawerCats"></h4>
+			<ul id="drawer-cats"></ul>
+			<h4 data-i="drawerHelp"></h4>
+			<ul>
+				<li><a href="#/cuenta" data-gmk-drawer="close" data-i="l_account"></a></li>
+				<li><a href="#/demo" data-gmk-drawer="close" data-i="l_ship"></a></li>
+				<li><a href="mailto:gmarket@gmeti.com" data-i="l_contact"></a></li>
+			</ul>
+		</div>
+	</aside>
+</div>
+
+<a class="gmk-totop" href="#arriba" hidden data-i-aria="toTop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></a>
+<div class="mk-toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+	'use strict';
+
+	var I = {
+		es: {
+			back: '← Volver a GMarket', note: 'Demostración: productos y precios de ejemplo. No se hacen pedidos ni pagos reales.', dl: 'Descargar gratis',
+			store: 'Mi Tienda', deliverSmall: 'Enviamos a', deliver: 'Todo el país', hello: 'Hola, identifícate', account: 'Cuenta y listas',
+			ordersSmall: 'Devoluciones', orders: 'y pedidos', cart: 'Carrito', all: 'Todas', more: 'Más', promo: 'Envío rápido · Pago seguro',
+			searchPh: 'Busca productos, marcas y más…', searchShort: 'Buscar…', searchAll: 'Todo', searchIn: 'Buscar en', search: 'Buscar', searchProducts: 'Buscar productos',
+			searchNone: 'No encontramos productos con esa búsqueda.', searchSeeAll: 'Ver todos los resultados', searchCat: 'Categoría:',
+			openMenu: 'Abrir menú', menu: 'Menú', close: 'Cerrar', categories: 'Categorías', drawerCats: 'Comprar por categoría', drawerAll: 'Ver toda la tienda', drawerHelp: 'Ayuda y configuración',
+			shopNav: 'Tienda', dealsNav: 'Ofertas',
+			toTop: 'Volver arriba', ft1t: 'Compra desde donde estés', ft1: 'Tienda abierta las 24 horas.', ft2t: 'Envío a domicilio', ft2: 'Seguimiento de tu pedido por correo.',
+			ft3t: 'Pago 100% seguro', ft3: 'Tarjeta, PayPal, Apple Pay y Google Pay.', ft4t: 'Atención por correo',
+			about: 'Tu tienda online de confianza. Compra fácil, paga seguro y recibe en casa.', col1: 'Conócenos', col2: 'Te ayudamos', col3: 'Información legal', col4: 'Categorías',
+			l_about: 'Quiénes somos', l_blog: 'Blog', l_work: 'Trabaja con nosotros', l_account: 'Mi cuenta', l_ship: 'Envíos', l_returns: 'Devoluciones', l_contact: 'Contacto',
+			l_privacy: 'Privacidad', l_terms: 'Términos y condiciones', l_cookies: 'Cookies', copy: 'Todos los derechos reservados.', pay: 'Métodos de pago aceptados',
+			heroPill: 'Tu tienda online', heroTitle: 'Todo lo que necesitas, en una tienda rápida y fácil de usar',
+			heroText: 'Buscador con sugerencias en vivo, filtros por precio y características, y un pago seguro con tarjeta, PayPal, Apple Pay o Google Pay.',
+			heroBuy: 'Comprar ahora', heroDeals: 'Ver ofertas', easy: 'Así de fácil',
+			easySteps: ['<b>Elige</b> los productos que te gustan.', '<b>Añádelos</b> al carrito.', '<b>Paga</b> de forma segura.', '<b>Recibe</b> tu pedido en casa.'],
+			easyFoot: '✓ Envío a todo el país &nbsp; ✓ Confirmación por correo',
+			tileMore: 'Ver todo en', homeMore: 'Ver más', rowSale: 'Ofertas del día', rowNew: 'Novedades', homeCats: 'Comprar por categoría', countOne: '%d producto', countMany: '%d productos',
+			crumbHome: 'Inicio', shopTitle: 'Todos los productos', searchTitle: 'Resultados para', saleBadge: 'Oferta', cardShip: 'Envío a domicilio',
+			addCart: 'Añadir al carrito', readMore: 'Leer más', save: 'Guardar', saved: 'Guardado',
+			fTitle: 'Filtrar resultados', fButton: 'Filtros', fCat: 'Categoría', fAllCats: 'Todas las categorías', fPrice: 'Precio', fUnder: 'Menos de %s', fBetween: '%1 a %2', fOver: 'Más de %s',
+			fMin: 'Mín', fMax: 'Máx', fGo: 'Ir', fChipPrice: 'Precio:', fColor: 'Color', fRating: 'Opinión media de clientes', fRatingOpt: '★★★★ y más', fChipRating: '4 estrellas o más',
+			fAvail: 'Disponibilidad y ofertas', fInstock: 'Solo productos disponibles', fOnsale: 'En oferta', fChipStock: 'Disponibles', fClear: 'Borrar todos los filtros',
+			resOne: 'Mostrando el único resultado', resAll: 'Mostrando los %d resultados',
+			sort: ['Orden predeterminado', 'Ordenar por popularidad', 'Ordenar por puntuación media', 'Ordenar por los últimos', 'Ordenar por precio: bajo a alto', 'Ordenar por precio: alto a bajo'],
+			noResults: 'No se han encontrado productos que coincidan con tu selección.', suggested: 'Productos que te pueden interesar',
+			reviews: 'valoraciones', inStock: 'Hay existencias', outStock: 'Agotado', qty: 'Cantidad',
+			box1t: 'Paga como prefieras', box1: 'con tarjeta de débito o crédito, PayPal, Apple Pay o Google Pay.', box2t: 'Entrega a domicilio.', box2: 'El costo de envío se calcula en el pago.',
+			box3t: 'Compra protegida.', box3: 'Recibes la confirmación del pedido en tu correo.', sku: 'SKU:', catLabel: 'Categoría:',
+			tabDesc: 'Descripción', tabSpecs: 'Características', tabReviews: 'Valoraciones', related: 'Productos relacionados',
+			desc: 'Producto de ejemplo para ver cómo luce una ficha con GMarket: foto grande, precio, valoración, existencias, bloque de ventajas y pestañas ordenadas. En tu tienda aquí va la descripción que escribas en WooCommerce.',
+			short: 'Producto de ejemplo de la demo. Pruébalo: elige la cantidad y añádelo al carrito.',
+			specColor: 'Color', specAvail: 'Disponibilidad', specShip: 'Envío', specShipV: 'A domicilio, en todo el país',
+			rev1: ['Laura M.', 'Llegó rápido y tal como se ve en las fotos. Muy contenta con la compra.'], rev2: ['Carlos R.', 'Buena calidad por el precio. Lo recomiendo.'],
+			cartTitle: 'Carrito', cartEmpty: 'Tu carrito está vacío.', backShop: 'Volver a la tienda', product: 'Producto', price: 'Precio', subtotal: 'Subtotal', remove: 'Quitar',
+			totals: 'Total del carrito', shipping: 'Envío', shippingV: 'Se calcula en el pago', total: 'Total', checkout: 'Finalizar compra',
+			added: '«%s» se ha añadido a tu carrito.', seeCart: 'Ver carrito', checkoutDemo: 'Es una demo: aquí empezaría el pago con WooCommerce. No se cobra nada.',
+			accTitle: 'Mi cuenta', accText: 'En tu tienda, aquí tus clientes entran a su cuenta para ver sus pedidos, direcciones y métodos de pago, con los textos que elijas en Apariencia › Textos de la tienda.',
+			accDemo: 'En esta demo no hay cuentas de cliente.', linkDemo: 'Es una demo: en tu tienda este enlace lleva a la página que elijas en Apariencia › Menús.',
+			colors: { negro: 'Negro', blanco: 'Blanco', azul: 'Azul', rojo: 'Rojo', verde: 'Verde' }
+		},
+		en: {
+			back: '← Back to GMarket', note: 'Demo: sample products and prices. No real orders or payments are made.', dl: 'Download free',
+			store: 'My Store', deliverSmall: 'We ship to', deliver: 'Nationwide', hello: 'Hello, sign in', account: 'Account & lists',
+			ordersSmall: 'Returns', orders: '& orders', cart: 'Cart', all: 'All', more: 'More', promo: 'Fast shipping · Secure payment',
+			searchPh: 'Search products, brands and more…', searchShort: 'Search…', searchAll: 'All', searchIn: 'Search in', search: 'Search', searchProducts: 'Search products',
+			searchNone: 'No products match your search.', searchSeeAll: 'See all results for', searchCat: 'Category:',
+			openMenu: 'Open menu', menu: 'Menu', close: 'Close', categories: 'Categories', drawerCats: 'Shop by category', drawerAll: 'See the whole store', drawerHelp: 'Help & settings',
+			shopNav: 'Shop', dealsNav: 'Deals',
+			toTop: 'Back to top', ft1t: 'Shop from anywhere', ft1: 'Store open 24 hours a day.', ft2t: 'Home delivery', ft2: 'Track your order by email.',
+			ft3t: '100% secure payment', ft3: 'Card, PayPal, Apple Pay and Google Pay.', ft4t: 'Email support',
+			about: 'Your trusted online store. Shop easily, pay securely and get it at home.', col1: 'About us', col2: 'We can help', col3: 'Legal', col4: 'Categories',
+			l_about: 'Who we are', l_blog: 'Blog', l_work: 'Careers', l_account: 'My account', l_ship: 'Shipping', l_returns: 'Returns', l_contact: 'Contact',
+			l_privacy: 'Privacy', l_terms: 'Terms and conditions', l_cookies: 'Cookies', copy: 'All rights reserved.', pay: 'Accepted payment methods',
+			heroPill: 'Your online store', heroTitle: 'Everything you need, in a fast and easy-to-use store',
+			heroText: 'Search with live suggestions, filters by price and features, and secure checkout with card, PayPal, Apple Pay or Google Pay.',
+			heroBuy: 'Shop now', heroDeals: 'See deals', easy: "It's that easy",
+			easySteps: ['<b>Choose</b> the products you like.', '<b>Add</b> them to the cart.', '<b>Pay</b> securely.', '<b>Get</b> your order at home.'],
+			easyFoot: '✓ Nationwide shipping &nbsp; ✓ Email confirmation',
+			tileMore: 'See all in', homeMore: 'See more', rowSale: "Today's deals", rowNew: 'New arrivals', homeCats: 'Shop by category', countOne: '%d product', countMany: '%d products',
+			crumbHome: 'Home', shopTitle: 'All products', searchTitle: 'Results for', saleBadge: 'Sale', cardShip: 'Home delivery',
+			addCart: 'Add to cart', readMore: 'Read more', save: 'Save', saved: 'Saved',
+			fTitle: 'Filter results', fButton: 'Filters', fCat: 'Category', fAllCats: 'All categories', fPrice: 'Price', fUnder: 'Under %s', fBetween: '%1 to %2', fOver: 'Over %s',
+			fMin: 'Min', fMax: 'Max', fGo: 'Go', fChipPrice: 'Price:', fColor: 'Color', fRating: 'Average customer review', fRatingOpt: '★★★★ & up', fChipRating: '4 stars & up',
+			fAvail: 'Availability & deals', fInstock: 'In stock only', fOnsale: 'On sale', fChipStock: 'In stock', fClear: 'Clear all filters',
+			resOne: 'Showing the single result', resAll: 'Showing all %d results',
+			sort: ['Default sorting', 'Sort by popularity', 'Sort by average rating', 'Sort by latest', 'Sort by price: low to high', 'Sort by price: high to low'],
+			noResults: 'No products were found matching your selection.', suggested: 'Products you may like',
+			reviews: 'reviews', inStock: 'In stock', outStock: 'Out of stock', qty: 'Quantity',
+			box1t: 'Pay your way', box1: 'with debit or credit card, PayPal, Apple Pay or Google Pay.', box2t: 'Home delivery.', box2: 'Shipping is calculated at checkout.',
+			box3t: 'Protected purchase.', box3: 'You get the order confirmation by email.', sku: 'SKU:', catLabel: 'Category:',
+			tabDesc: 'Description', tabSpecs: 'Specifications', tabReviews: 'Reviews', related: 'Related products',
+			desc: 'A sample product to show what a product page looks like with GMarket: large photo, price, rating, stock, perks block and tidy tabs. In your store, the description you write in WooCommerce goes here.',
+			short: 'A sample product from the demo. Try it: choose the quantity and add it to the cart.',
+			specColor: 'Color', specAvail: 'Availability', specShip: 'Shipping', specShipV: 'Home delivery, nationwide',
+			rev1: ['Laura M.', 'Arrived quickly and just like in the photos. Very happy with it.'], rev2: ['Carlos R.', 'Good quality for the price. Recommended.'],
+			cartTitle: 'Cart', cartEmpty: 'Your cart is currently empty.', backShop: 'Return to shop', product: 'Product', price: 'Price', subtotal: 'Subtotal', remove: 'Remove',
+			totals: 'Cart totals', shipping: 'Shipping', shippingV: 'Calculated at checkout', total: 'Total', checkout: 'Proceed to checkout',
+			added: '“%s” has been added to your cart.', seeCart: 'View cart', checkoutDemo: 'This is a demo: WooCommerce checkout would start here. Nothing is charged.',
+			accTitle: 'My account', accText: 'In your store, this is where customers sign in to see their orders, addresses and payment methods, with the texts you choose in Appearance › Store texts.',
+			accDemo: 'There are no customer accounts in this demo.', linkDemo: 'This is a demo: in your store this link goes to the page you choose in Appearance › Menus.',
+			colors: { negro: 'Black', blanco: 'White', azul: 'Blue', rojo: 'Red', verde: 'Green' }
+		}
+	};
+
+	var CATS = [
+		{ id: 'electronica', es: 'Electrónica', en: 'Electronics', e: '🎧' },
+		{ id: 'moda', es: 'Moda', en: 'Fashion', e: '👟' },
+		{ id: 'hogar', es: 'Hogar', en: 'Home', e: '☕' },
+		{ id: 'deportes', es: 'Deportes', en: 'Sports', e: '⚽' },
+		{ id: 'belleza', es: 'Belleza', en: 'Beauty', e: '🧴' },
+		{ id: 'juguetes', es: 'Juguetes', en: 'Toys', e: '🧸' }
+	];
+
+	// id, emoji, fondo, categoría, nombre ES, nombre EN, precio, oferta, valoración, nº valoraciones, hay existencias, color
+	var P = [
+		[1, '🎧', 1, 'electronica', 'Auriculares inalámbricos Bluetooth con cancelación de ruido', 'Wireless Bluetooth headphones with noise cancelling', 79.99, 59.99, 4.6, 312, 1, 'negro'],
+		[2, '⌚', 2, 'electronica', 'Reloj inteligente con GPS y monitor de ritmo cardiaco', 'Smartwatch with GPS and heart rate monitor', 129, 0, 4.4, 198, 1, 'negro'],
+		[3, '📱', 5, 'electronica', 'Teléfono 128 GB con cámara doble', '128 GB phone with dual camera', 299, 269, 4.5, 87, 1, 'azul'],
+		[4, '📷', 3, 'electronica', 'Cámara compacta 24 MP con zoom óptico 10x', '24 MP compact camera with 10x optical zoom', 189.9, 0, 4.2, 45, 0, 'negro'],
+		[5, '💻', 1, 'electronica', 'Portátil ligero de 14 pulgadas con 8 GB de RAM', 'Lightweight 14-inch laptop with 8 GB RAM', 549, 0, 4.7, 156, 1, 'blanco'],
+		[6, '🔋', 4, 'electronica', 'Batería externa 10 000 mAh de carga rápida', '10,000 mAh fast-charging power bank', 24.99, 18.99, 4.3, 421, 1, 'blanco'],
+		[7, '👟', 3, 'moda', 'Zapatillas deportivas ligeras', 'Lightweight running shoes', 64.9, 0, 4.5, 233, 1, 'blanco'],
+		[8, '👜', 4, 'moda', 'Bolso de mano de piel sintética', 'Faux leather handbag', 39.95, 29.95, 3.7, 67, 1, 'rojo'],
+		[9, '🕶️', 1, 'moda', 'Gafas de sol polarizadas', 'Polarized sunglasses', 19.99, 0, 3.8, 128, 1, 'negro'],
+		[10, '🧢', 5, 'moda', 'Gorra clásica de algodón', 'Classic cotton cap', 12.5, 0, 4.4, 94, 1, 'azul'],
+		[11, '👕', 2, 'moda', 'Camiseta básica de algodón orgánico', 'Organic cotton basic T-shirt', 14.99, 0, 4.3, 310, 1, 'verde'],
+		[12, '☕', 4, 'hogar', 'Cafetera espresso de 15 bares', '15-bar espresso machine', 119, 99, 4.6, 142, 1, 'negro'],
+		[13, '🌵', 5, 'hogar', 'Planta de interior en maceta', 'Potted houseplant', 16.9, 0, 4.8, 58, 1, 'verde'],
+		[14, '🛋️', 2, 'hogar', 'Cojín decorativo de terciopelo', 'Velvet throw pillow', 17.5, 0, 4.2, 39, 1, 'rojo'],
+		[15, '💡', 4, 'hogar', 'Lámpara de mesa LED regulable', 'Dimmable LED table lamp', 29.99, 0, 4.5, 77, 0, 'blanco'],
+		[16, '🍳', 3, 'hogar', 'Sartén antiadherente de 28 cm', '28 cm non-stick frying pan', 22.9, 17.9, 4.4, 205, 1, 'negro'],
+		[17, '⚽', 5, 'deportes', 'Balón de fútbol talla 5', 'Size 5 soccer ball', 21.99, 0, 4.6, 180, 1, 'blanco'],
+		[18, '🚲', 1, 'deportes', 'Bicicleta urbana de 7 velocidades', '7-speed city bike', 349, 0, 4.3, 33, 1, 'verde'],
+		[19, '🎒', 3, 'deportes', 'Mochila de viaje impermeable de 30 L', '30 L waterproof travel backpack', 44.9, 34.9, 4.7, 264, 1, 'rojo'],
+		[20, '🏓', 4, 'deportes', 'Set de ping-pong con 2 palas y 3 pelotas', 'Ping-pong set with 2 paddles and 3 balls', 18.99, 0, 3.9, 52, 1, 'rojo'],
+		[21, '🧴', 1, 'belleza', 'Crema hidratante facial de 50 ml', 'Moisturizing face cream, 50 ml', 15.9, 0, 4.4, 190, 1, 'blanco'],
+		[22, '💄', 3, 'belleza', 'Barra de labios mate de larga duración', 'Long-lasting matte lipstick', 9.99, 7.49, 4.2, 143, 1, 'rojo'],
+		[23, '🧸', 4, 'juguetes', 'Oso de peluche suave de 40 cm', 'Soft 40 cm teddy bear', 19.9, 0, 4.9, 88, 1, 'blanco'],
+		[24, '🧩', 2, 'juguetes', 'Puzle de 1000 piezas', '1000-piece jigsaw puzzle', 13.99, 0, 4.5, 71, 1, 'azul'],
+		[25, '🪁', 5, 'juguetes', 'Cometa de colores para niños', 'Colorful kite for kids', 11.5, 8.9, 3.6, 26, 1, 'verde']
+	].map(function (a) {
+		return { id: a[0], e: a[1], bg: a[2], cat: a[3], es: a[4], en: a[5], price: a[6], sale: a[7], r: a[8], n: a[9], stock: !!a[10], color: a[11] };
+	});
+	var RANGES = [10, 20, 50];
+
+	var lang = 'es', cart = {}, wish = {};
+	var main = document.getElementById('contenido');
+
+	function t(k) { return I[lang][k]; }
+	function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+	function norm(s) { return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+	function money(n) { var s = n.toFixed(2); return '$' + (lang === 'es' ? s.replace('.', ',') : s); }
+	function money0(n) { return '$' + n; }
+	function cur(p) { return p.sale || p.price; }
+	function name(p) { return p[lang]; }
+	function catOf(id) { return CATS.filter(function (c) { return c.id === id; })[0]; }
+	function byId(id) { return P.filter(function (p) { return p.id === +id; })[0]; }
+	function img(p) { return '<i class="mk-img mk-c' + p.bg + '" role="img" aria-label="' + esc(name(p)) + '">' + p.e + '</i>'; }
+	function priceHtml(p) { return p.sale ? '<del aria-hidden="true">' + money(p.price) + '</del> <ins>' + money(p.sale) + '</ins>' : money(p.price); }
+	function stars(r) { return '<span class="mk-stars" style="--r:' + r + '" role="img" aria-label="' + r.toLocaleString(lang) + ' / 5">★★★★★</span>'; }
+	function count(n) { return (n === 1 ? t('countOne') : t('countMany')).replace('%d', n); }
+
+	/* ---------- Textos fijos ---------- */
+	function applyStatic() {
+		document.documentElement.lang = lang;
+		document.title = lang === 'en' ? 'Demo · GMarket · WordPress theme for WooCommerce stores' : 'Demo · GMarket · Tema de WordPress para tiendas WooCommerce';
+		document.querySelectorAll('[data-i]').forEach(function (n) { n.innerHTML = t(n.getAttribute('data-i')); });
+		document.querySelectorAll('[data-i-aria]').forEach(function (n) { n.setAttribute('aria-label', t(n.getAttribute('data-i-aria'))); });
+		document.querySelectorAll('.gmk-lang a').forEach(function (a) {
+			var on = a.getAttribute('data-lang') === lang;
+			a.classList.toggle('on', on);
+			if (on) { a.setAttribute('aria-current', 'true'); } else { a.removeAttribute('aria-current'); }
+		});
+		document.querySelector('.gmk-pay').setAttribute('aria-label', t('pay'));
+		setPlaceholder();
+
+		// Buscador y barra de categorías: los elementos se crean una vez (el JS del tema los lee al cargar)
+		// y al cambiar de idioma solo cambia su texto.
+		var sel = document.getElementById('gmk-search-cat'), menu = document.querySelector('.gmk-picker__menu'), nl = document.getElementById('navlist');
+		if (!sel.options.length) {
+			sel.innerHTML = '<option value=""></option>' + CATS.map(function (c) { return '<option value="' + c.id + '"></option>'; }).join('');
+			menu.innerHTML = '<li role="option" data-value="" aria-selected="true"></li>' + CATS.map(function (c) { return '<li role="option" data-value="' + c.id + '" aria-selected="false"></li>'; }).join('');
+			nl.innerHTML = '<li><a href="#/tienda" data-k="shopNav"></a></li>' +
+				CATS.map(function (c) { return '<li><a href="#/tienda?cat=' + c.id + '" data-c="' + c.id + '"></a></li>'; }).join('') +
+				'<li><a href="#/tienda?oferta=1" data-k="dealsNav"></a></li>';
+		}
+		function catName(id) { return id ? catOf(id)[lang] : t('searchAll'); }
+		Array.prototype.forEach.call(sel.options, function (o) { o.textContent = catName(o.value); });
+		menu.querySelectorAll('li').forEach(function (li) { li.textContent = catName(li.getAttribute('data-value')); });
+		document.querySelector('.gmk-picker__label').textContent = catName(sel.value);
+		nl.querySelectorAll('a').forEach(function (a) { a.textContent = a.getAttribute('data-c') ? catOf(a.getAttribute('data-c'))[lang] : t(a.getAttribute('data-k')); });
+		var chevron = '<svg class="gmk-icon gmk-icon--chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>';
+		document.getElementById('drawer-cats').innerHTML = CATS.map(function (c) {
+			return '<li><a href="#/tienda?cat=' + c.id + '" data-gmk-drawer="close">' + c[lang] + ' ' + chevron + '</a></li>';
+		}).join('') + '<li><a href="#/tienda" data-gmk-drawer="close"><strong>' + t('drawerAll') + '</strong></a></li>';
+		document.getElementById('ft-cats').innerHTML = CATS.map(function (c) { return '<li><a href="#/tienda?cat=' + c.id + '">' + c[lang] + '</a></li>'; }).join('');
+		markNav();
+	}
+
+	function setPlaceholder() {
+		document.getElementById('gmk-search-q').placeholder = window.innerWidth < 768 ? t('searchShort') : t('searchPh');
+	}
+	window.addEventListener('resize', setPlaceholder);
+
+	function markNav() {
+		var h = location.hash || '#/';
+		document.querySelectorAll('#navlist li').forEach(function (li) { li.classList.toggle('current-menu-item', li.querySelector('a').getAttribute('href') === h); });
+	}
+
+	/* ---------- Carrito y avisos ---------- */
+	var toastTimer;
+	function toast(html) {
+		var el = document.getElementById('toast');
+		el.innerHTML = html;
+		el.classList.add('show');
+		clearTimeout(toastTimer);
+		toastTimer = setTimeout(function () { el.classList.remove('show'); }, 4200);
+	}
+	function cartCount() { return Object.keys(cart).reduce(function (s, k) { return s + cart[k]; }, 0); }
+	function updateCount() { document.querySelector('.gmk-cart__count').textContent = cartCount(); }
+	function addToCart(id, q) {
+		var p = byId(id);
+		if (!p || !p.stock) { return; }
+		cart[id] = (cart[id] || 0) + (q || 1);
+		updateCount();
+		toast('<span>' + esc(t('added').replace('%s', name(p))) + '</span><a href="#/carrito">' + t('seeCart') + '</a>');
+	}
+
+	/* ---------- Piezas ---------- */
+	function card(p) {
+		var c = catOf(p.cat);
+		return '<li class="product">' +
+			'<a class="woocommerce-LoopProduct-link" href="#/p/' + p.id + '">' +
+				(p.sale ? '<span class="onsale">' + t('saleBadge') + '</span>' : '') + img(p) +
+				'<span class="gmk-card__cat">' + c[lang] + '</span>' +
+				'<h2 class="woocommerce-loop-product__title">' + esc(name(p)) + '</h2>' +
+				'<span class="mk-rating">' + stars(p.r) + ' ' + p.n + '</span>' +
+				'<span class="price">' + priceHtml(p) + '</span>' +
+				'<span class="gmk-card__ship"><svg class="gmk-icon gmk-icon--truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg> ' + t('cardShip') + '</span>' +
+			'</a>' +
+			'<div class="gmk-card__actions">' +
+				(p.stock ? '<a href="#/p/' + p.id + '" class="button add_to_cart_button" data-add="' + p.id + '">' + t('addCart') + '</a>' : '<a href="#/p/' + p.id + '" class="button">' + t('readMore') + '</a>') +
+				'<div class="yith-wcwl-add-to-wishlist"><a href="#" class="yith-wcwl-add-to-wishlist-button" data-wish="' + p.id + '">' + heart(wish[p.id]) + '<span class="yith-wcwl-add-to-wishlist-button__label">' + (wish[p.id] ? t('saved') : t('save')) + '</span></a></div>' +
+			'</div></li>';
+	}
+	function heart(on) {
+		return '<svg viewBox="0 0 24 24" fill="' + (on ? 'currentColor' : 'none') + '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg>';
+	}
+	function rowItem(p) {
+		return '<a class="gmk-row__item" href="#/p/' + p.id + '"><span class="gmk-row__img">' + img(p) + (p.sale ? '<span class="onsale">' + t('saleBadge') + '</span>' : '') + '</span>' +
+			'<span class="gmk-row__title">' + esc(name(p)) + '</span><span class="gmk-row__price">' + priceHtml(p) + '</span></a>';
+	}
+	function row(title, list, more) {
+		return '<section class="gmk-row"><div class="gmk-row__head"><h2>' + title + '</h2><a href="' + more + '">' + t('homeMore') + '</a></div><div class="gmk-row__track">' + list.map(rowItem).join('') + '</div></section>';
+	}
+	function crumbs(items) {
+		return '<nav class="woocommerce-breadcrumb gmk-breadcrumb"><a href="#/">' + t('crumbHome') + '</a>' + items.map(function (i) {
+			return '<span class="sep">›</span>' + (i[1] ? '<a href="' + i[1] + '">' + esc(i[0]) + '</a>' : esc(i[0]));
+		}).join('') + '</nav>';
+	}
+
+	/* ---------- Portada ---------- */
+	function home() {
+		var tiles = ['electronica', 'moda', 'hogar', 'deportes'].map(function (id) {
+			var c = catOf(id);
+			return '<div class="gmk-tile"><h3>' + c[lang] + '</h3><div class="gmk-tile__grid">' +
+				P.filter(function (p) { return p.cat === id; }).slice(0, 4).map(function (p) {
+					return '<a href="#/p/' + p.id + '">' + img(p) + '<span>' + esc(name(p)) + '</span></a>';
+				}).join('') + '</div><a class="gmk-tile__more" href="#/tienda?cat=' + id + '">' + t('tileMore') + ' ' + c[lang] + '</a></div>';
+		}).join('');
+		var cats = CATS.map(function (c) {
+			var n = P.filter(function (p) { return p.cat === c.id; }).length;
+			return '<a class="gmk-cats__item" href="#/tienda?cat=' + c.id + '"><span class="gmk-cats__img"><i class="mk-img">' + c.e + '</i></span><span class="gmk-cats__name">' + c[lang] + '</span><span class="gmk-cats__count">' + count(n) + '</span></a>';
+		}).join('');
+		var news = P.slice().sort(function (a, b) { return b.id - a.id; }).slice(0, 6);
+		main.innerHTML =
+			'<section class="mk-hero"><div class="gmk-container mk-hero__in"><div>' +
+				'<span class="gmk-online"><span class="gmk-online__dot"></span>' + t('heroPill') + '</span>' +
+				'<h1>' + t('heroTitle') + '</h1><p>' + t('heroText') + '</p>' +
+				'<div class="mk-btns"><a class="mk-btn mk-btn--y" href="#/tienda">' + t('heroBuy') + '</a><a class="mk-btn mk-btn--g" href="#/tienda?oferta=1">' + t('heroDeals') + '</a></div>' +
+			'</div><div class="mk-easy"><h3>' + t('easy') + '</h3><ol>' + t('easySteps').map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ol><small>' + t('easyFoot') + '</small></div></div></section>' +
+			'<div class="gmk-container mk-home">' +
+				'<div class="gmk-tiles">' + tiles + '</div>' +
+				row(t('rowSale'), P.filter(function (p) { return p.sale; }).slice(0, 6), '#/tienda?oferta=1') +
+				'<h2 class="mk-h">' + t('homeCats') + '</h2><div class="gmk-cats">' + cats + '</div>' +
+				row(t('rowNew'), news, '#/tienda?orden=3') +
+			'</div>';
+	}
+
+	/* ---------- Tienda con filtros ---------- */
+	var GROUPS = ['cat', 'precio', 'color', 'valoracion', 'stock', 'oferta'];
+	function inRange(p, key, min, max) {
+		var v = cur(p);
+		if (key !== '' && key !== null) {
+			var i = +key, lo = i === 0 ? 0 : RANGES[i - 1], hi = i < RANGES.length ? RANGES[i] : Infinity;
+			if (v < lo || v >= hi) { return false; }
+		}
+		if (min !== '' && min !== null && v < +min) { return false; }
+		if (max !== '' && max !== null && v > +max) { return false; }
+		return true;
+	}
+	function filter(q, skip) {
+		var s = norm(q.get('s') || ''), colors = (q.get('color') || '').split(',').filter(Boolean);
+		return P.filter(function (p) {
+			if (s && norm(name(p) + ' ' + catOf(p.cat)[lang]).indexOf(s) < 0) { return false; }
+			if (skip !== 'cat' && q.get('cat') && p.cat !== q.get('cat')) { return false; }
+			if (skip !== 'precio' && !inRange(p, q.get('precio'), q.get('min'), q.get('max'))) { return false; }
+			if (skip !== 'color' && colors.length && colors.indexOf(p.color) < 0) { return false; }
+			if (skip !== 'valoracion' && q.get('valoracion') && p.r < 4) { return false; }
+			if (skip !== 'stock' && q.get('stock') && !p.stock) { return false; }
+			if (skip !== 'oferta' && q.get('oferta') && !p.sale) { return false; }
+			return true;
+		});
+	}
+	function link(q, changes) {
+		var n = new URLSearchParams(q.toString());
+		Object.keys(changes).forEach(function (k) { if (changes[k] === null || changes[k] === '') { n.delete(k); } else { n.set(k, changes[k]); } });
+		var s = n.toString();
+		return '#/tienda' + (s ? '?' + s : '');
+	}
+	function check(href, label, n, on) {
+		return '<li><a class="gmk-check' + (on ? ' is-active' : '') + '" href="' + href + '"><span class="gmk-check__box"></span><span class="gmk-check__label">' + label + '</span><span class="gmk-check__count">(' + n + ')</span></a></li>';
+	}
+	function shop(q) {
+		var list = filter(q, null), c = q.get('cat') ? catOf(q.get('cat')) : null, s = q.get('s') || '';
+		var order = +(q.get('orden') || 0);
+		var sorters = [
+			function (a, b) { return a.id - b.id; },
+			function (a, b) { return b.n - a.n; },
+			function (a, b) { return b.r - a.r; },
+			function (a, b) { return b.id - a.id; },
+			function (a, b) { return cur(a) - cur(b); },
+			function (a, b) { return cur(b) - cur(a); }
+		];
+		list.sort(sorters[order] || sorters[0]);
+
+		// Categorías
+		var baseCat = filter(q, 'cat');
+		var fCats = '<li><a href="' + link(q, { cat: null }) + '"' + (c ? '' : ' class="is-active"') + '>' + t('fAllCats') + ' <span>(' + baseCat.length + ')</span></a></li>' +
+			CATS.map(function (x) {
+				var n = baseCat.filter(function (p) { return p.cat === x.id; }).length;
+				return n ? '<li><a href="' + link(q, { cat: x.id }) + '"' + (c && c.id === x.id ? ' class="is-active"' : '') + '>' + x[lang] + ' <span>(' + n + ')</span></a></li>' : '';
+			}).join('');
+		// Precio
+		var basePrice = filter(q, 'precio'), pr = q.get('precio');
+		var fPrice = [0, 1, 2, 3].map(function (i) {
+			var label = fPriceLabel(i);
+			var n = basePrice.filter(function (p) { return inRange(p, String(i), null, null); }).length;
+			var on = pr === String(i);
+			return n || on ? check(link(q, { precio: on ? null : String(i) }), label, n, on) : '';
+		}).join('');
+		// Color
+		var baseColor = filter(q, 'color'), colors = (q.get('color') || '').split(',').filter(Boolean);
+		var fColor = Object.keys(I.es.colors).map(function (k) {
+			var n = baseColor.filter(function (p) { return p.color === k; }).length, on = colors.indexOf(k) > -1;
+			var next = on ? colors.filter(function (x) { return x !== k; }) : colors.concat(k);
+			return n || on ? check(link(q, { color: next.join(',') || null }), t('colors')[k], n, on) : '';
+		}).join('');
+		var nRating = filter(q, 'valoracion').filter(function (p) { return p.r >= 4; }).length;
+		var nStock = filter(q, 'stock').filter(function (p) { return p.stock; }).length;
+		var nSale = filter(q, 'oferta').filter(function (p) { return p.sale; }).length;
+
+		// Etiquetas de filtros activos
+		var x = '<svg class="gmk-icon gmk-icon--close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+		var chips = [];
+		if (c) { chips.push([c[lang], { cat: null }]); }
+		if (pr !== null && pr !== '') { chips.push([t('fChipPrice') + ' ' + fPriceLabel(+pr), { precio: null }]); }
+		if (q.get('min') || q.get('max')) { chips.push([t('fChipPrice') + ' ' + (q.get('min') ? money0(q.get('min')) : '$0') + ' – ' + (q.get('max') ? money0(q.get('max')) : '∞'), { min: null, max: null }]); }
+		colors.forEach(function (k) { chips.push([t('colors')[k], { color: colors.filter(function (y) { return y !== k; }).join(',') || null }]); });
+		if (q.get('valoracion')) { chips.push([t('fChipRating'), { valoracion: null }]); }
+		if (q.get('stock')) { chips.push([t('fChipStock'), { stock: null }]); }
+		if (q.get('oferta')) { chips.push([t('fOnsale'), { oferta: null }]); }
+		var chipsHtml = chips.length ? '<div class="gmk-chips">' + chips.map(function (ch) { return '<a class="gmk-chip" href="' + link(q, ch[1]) + '">' + esc(ch[0]) + ' ' + x + '</a>'; }).join('') +
+			'<a class="gmk-chips__clear" href="' + (s ? '#/tienda?s=' + encodeURIComponent(s) : '#/tienda') + '">' + t('fClear') + '</a></div>' : '';
+
+		var title = s ? '<span>' + t('searchTitle') + '</span> “' + esc(s) + '”' : c ? c[lang] : q.get('oferta') && chips.length === 1 ? t('dealsNav') : t('shopTitle');
+		var resCount = list.length === 1 ? t('resOne') : t('resAll').replace('%d', list.length);
+		var sortMenu = t('sort').map(function (o, i) { return '<li role="option" data-orden="' + i + '" aria-selected="' + (i === order) + '">' + o + '</li>'; }).join('');
+
+		var results = list.length ? '<ul class="products columns-4">' + list.map(card).join('') + '</ul>' :
+			'<div class="woocommerce-info">' + t('noResults') + '</div><section class="gmk-suggested"><h2 class="gmk-suggested__title">' + t('suggested') + '</h2><ul class="products columns-4">' +
+			P.filter(function (p) { return p.sale; }).slice(0, 4).map(card).join('') + '</ul></section>';
+
+		var filterIcon = '<svg class="gmk-icon gmk-icon--filter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>';
+		main.innerHTML =
+			'<div class="woocommerce gmk-container gmk-shop">' + crumbs(c ? [[t('shopNav'), '#/tienda'], [c[lang]]] : [[t('shopNav')]]) +
+			'<div class="gmk-shop__layout">' +
+				'<aside class="gmk-shop__filters" aria-label="' + t('fTitle') + '">' +
+					'<div class="gmk-shop__filters-head"><strong>' + filterIcon + ' ' + t('fTitle') + '</strong><button type="button" class="gmk-shop__filters-close" data-gmk-filters="close" aria-label="' + t('close') + '">' + x + '</button></div>' +
+					'<div class="gmk-filter"><h3 class="gmk-filter__title">' + t('fCat') + '</h3><ul class="gmk-filter__cats">' + fCats + '</ul></div>' +
+					'<div class="gmk-filter"><h3 class="gmk-filter__title">' + t('fPrice') + '</h3><ul>' + fPrice + '</ul>' +
+						'<form class="gmk-price-form" id="price-form"><label><span class="screen-reader-text">' + t('fMin') + '</span><input type="number" min="0" name="min" placeholder="' + t('fMin') + '" value="' + esc(q.get('min') || '') + '"></label>' +
+						'<label><span class="screen-reader-text">' + t('fMax') + '</span><input type="number" min="0" name="max" placeholder="' + t('fMax') + '" value="' + esc(q.get('max') || '') + '"></label>' +
+						'<button type="submit" class="gmk-btn gmk-btn--small">' + t('fGo') + '</button></form></div>' +
+					(fColor ? '<div class="gmk-filter"><h3 class="gmk-filter__title">' + t('fColor') + '</h3><ul>' + fColor + '</ul></div>' : '') +
+					'<div class="gmk-filter"><h3 class="gmk-filter__title">' + t('fRating') + '</h3><ul>' + check(link(q, { valoracion: q.get('valoracion') ? null : '4' }), t('fRatingOpt'), nRating, !!q.get('valoracion')) + '</ul></div>' +
+					'<div class="gmk-filter"><h3 class="gmk-filter__title">' + t('fAvail') + '</h3><ul>' +
+						check(link(q, { stock: q.get('stock') ? null : '1' }), t('fInstock'), nStock, !!q.get('stock')) +
+						check(link(q, { oferta: q.get('oferta') ? null : '1' }), t('fOnsale'), nSale, !!q.get('oferta')) + '</ul></div>' +
+				'</aside>' +
+				'<div class="gmk-filters-overlay" data-gmk-filters="close"></div>' +
+				'<div class="gmk-shop__results">' +
+					'<button type="button" class="gmk-btn gmk-btn--ghost gmk-btn--small gmk-shop__filters-open" data-gmk-filters="open">' + filterIcon + ' ' + t('fButton') + '</button>' +
+					'<h1 class="page-title">' + title + '</h1>' + chipsHtml +
+					'<div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px">' +
+						'<p class="woocommerce-result-count">' + resCount + '</p>' +
+						'<div class="woocommerce-ordering"><div class="gmk-picker gmk-picker--select" id="sort"><button type="button" class="gmk-picker__btn" aria-haspopup="listbox" aria-expanded="false"><span class="gmk-picker__label">' + t('sort')[order] + '</span><svg class="gmk-picker__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="gmk-menu-pop gmk-picker__menu" role="listbox" hidden>' + sortMenu + '</ul></div></div>' +
+					'</div>' + results +
+				'</div>' +
+			'</div></div>';
+
+		document.getElementById('price-form').addEventListener('submit', function (e) {
+			e.preventDefault();
+			location.hash = link(q, { min: this.min.value, max: this.max.value, precio: null });
+		});
+		var sort = document.getElementById('sort'), sBtn = sort.querySelector('button'), sMenu = sort.querySelector('ul');
+		sBtn.addEventListener('click', function (e) {
+			e.stopPropagation();
+			sMenu.hidden = !sMenu.hidden;
+			sBtn.setAttribute('aria-expanded', String(!sMenu.hidden));
+		});
+		sMenu.querySelectorAll('li').forEach(function (li) {
+			li.addEventListener('mouseenter', function () { sMenu.querySelectorAll('li').forEach(function (o) { o.classList.toggle('is-active', o === li); }); });
+			li.addEventListener('click', function () { location.hash = link(q, { orden: li.getAttribute('data-orden') === '0' ? null : li.getAttribute('data-orden') }); });
+		});
+	}
+	// Cierra el menú de ordenar al tocar fuera
+	document.addEventListener('click', function (e) {
+		var sort = document.getElementById('sort');
+		if (sort && !sort.contains(e.target)) { sort.querySelector('ul').hidden = true; sort.querySelector('button').setAttribute('aria-expanded', 'false'); }
+	});
+	function fPriceLabel(i) {
+		return i === 0 ? t('fUnder').replace('%s', money0(RANGES[0])) : i === RANGES.length ? t('fOver').replace('%s', money0(RANGES[i - 1])) : t('fBetween').replace('%1', money0(RANGES[i - 1])).replace('%2', money0(RANGES[i]));
+	}
+
+	/* ---------- Ficha de producto ---------- */
+	function product(id) {
+		var p = byId(id);
+		if (!p) { location.hash = '#/tienda'; return; }
+		var c = catOf(p.cat), icons = {
+			globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/>',
+			truck: '<path d="M3 6h11v10H3zM14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/>',
+			shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>'
+		};
+		function ic(n) { return '<svg class="gmk-icon gmk-icon--' + n + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + icons[n] + '</svg>'; }
+		var related = P.filter(function (o) { return o.cat === p.cat && o.id !== p.id; }).slice(0, 5);
+		var sku = 'GMK-' + ('000' + p.id).slice(-4);
+		main.innerHTML =
+			'<div class="woocommerce gmk-container gmk-product-page">' + crumbs([[t('shopNav'), '#/tienda'], [c[lang], '#/tienda?cat=' + c.id], [name(p)]]) +
+			'<div class="product">' +
+				'<div class="images" style="position:relative">' + (p.sale ? '<span class="onsale">' + t('saleBadge') + '</span>' : '') + img(p) + '</div>' +
+				'<div class="summary entry-summary">' +
+					'<h1 class="product_title entry-title">' + esc(name(p)) + '</h1>' +
+					'<div class="mk-rating">' + stars(p.r) + ' <a href="#tab-reviews" data-tab="reviews">' + p.r.toLocaleString(lang) + ' · ' + p.n + ' ' + t('reviews') + '</a></div>' +
+					'<p class="price">' + priceHtml(p) + '</p>' +
+					'<div class="woocommerce-product-details__short-description"><p style="margin:0">' + t('short') + '</p></div>' +
+					'<p class="stock ' + (p.stock ? 'in-stock' : 'out-of-stock') + '">' + (p.stock ? t('inStock') : t('outStock')) + '</p>' +
+					'<form class="cart" id="add-form"><div class="quantity"><label class="screen-reader-text" for="qty">' + t('qty') + '</label><input type="number" id="qty" class="input-text qty text" min="1" max="20" value="1"' + (p.stock ? '' : ' disabled') + '></div>' +
+					'<button type="submit" class="single_add_to_cart_button button alt"' + (p.stock ? '' : ' disabled') + '>' + t('addCart') + '</button></form>' +
+					'<ul class="gmk-buybox"><li>' + ic('globe') + '<span><strong>' + t('box1t') + '</strong> ' + t('box1') + '</span></li><li>' + ic('truck') + '<span><strong>' + t('box2t') + '</strong> ' + t('box2') + '</span></li><li>' + ic('shield') + '<span><strong>' + t('box3t') + '</strong> ' + t('box3') + '</span></li></ul>' +
+					'<div class="product_meta"><span>' + t('sku') + ' ' + sku + '</span><span>' + t('catLabel') + ' <a href="#/tienda?cat=' + c.id + '">' + c[lang] + '</a></span></div>' +
+				'</div>' +
+				'<div class="woocommerce-tabs wc-tabs-wrapper"><ul class="tabs wc-tabs" role="tablist">' +
+					'<li class="active"><a href="#tab-description" data-tab="description">' + t('tabDesc') + '</a></li>' +
+					'<li><a href="#tab-specs" data-tab="specs">' + t('tabSpecs') + '</a></li>' +
+					'<li><a href="#tab-reviews" data-tab="reviews">' + t('tabReviews') + ' (' + p.n + ')</a></li></ul>' +
+					'<div class="panel" data-panel="description"><p>' + t('desc') + '</p></div>' +
+					'<div class="panel" data-panel="specs" hidden><table class="shop_attributes"><tr><th>' + t('specColor') + '</th><td>' + t('colors')[p.color] + '</td></tr><tr><th>' + t('specAvail') + '</th><td>' + (p.stock ? t('inStock') : t('outStock')) + '</td></tr><tr><th>' + t('specShip') + '</th><td>' + t('specShipV') + '</td></tr></table></div>' +
+					'<div class="panel" data-panel="reviews" hidden>' + [t('rev1'), t('rev2')].map(function (r, i) {
+						return '<div class="mk-review">' + stars(i ? 4 : 5) + '<p style="margin:6px 0 0"><strong>' + r[0] + '</strong> — ' + r[1] + '</p></div>';
+					}).join('') + '</div>' +
+				'</div>' +
+				(related.length ? '<section class="related products"><h2>' + t('related') + '</h2><ul class="products columns-5">' + related.map(card).join('') + '</ul></section>' : '') +
+			'</div></div>';
+
+		document.getElementById('add-form').addEventListener('submit', function (e) {
+			e.preventDefault();
+			addToCart(p.id, Math.max(1, Math.min(20, parseInt(document.getElementById('qty').value, 10) || 1)));
+		});
+		main.querySelectorAll('[data-tab]').forEach(function (a) {
+			a.addEventListener('click', function (e) {
+				e.preventDefault();
+				var k = a.getAttribute('data-tab');
+				main.querySelectorAll('.wc-tabs li').forEach(function (li) { li.classList.toggle('active', li.querySelector('a').getAttribute('data-tab') === k); });
+				main.querySelectorAll('[data-panel]').forEach(function (pn) { pn.hidden = pn.getAttribute('data-panel') !== k; });
+				if (a.closest('.mk-rating')) { main.querySelector('.woocommerce-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+			});
+		});
+	}
+
+	/* ---------- Carrito ---------- */
+	function cartPage() {
+		var ids = Object.keys(cart), total = 0;
+		var body = ids.length ? '<div class="mk-cart"><table><thead><tr><th class="mk-hide-sm"></th><th>' + t('product') + '</th><th class="mk-hide-sm">' + t('price') + '</th><th>' + t('qty') + '</th><th>' + t('subtotal') + '</th><th></th></tr></thead><tbody>' +
+			ids.map(function (id) {
+				var p = byId(id), sub = cur(p) * cart[id];
+				total += sub;
+				return '<tr><td class="mk-hide-sm"><span class="mk-cart-img" style="display:block">' + img(p) + '</span></td><td><a class="mk-name" href="#/p/' + p.id + '">' + esc(name(p)) + '</a></td><td class="mk-hide-sm">' + money(cur(p)) + '</td>' +
+					'<td><input class="qty" type="number" min="0" max="20" value="' + cart[id] + '" data-qty="' + id + '" aria-label="' + t('qty') + '"></td><td><strong>' + money(sub) + '</strong></td>' +
+					'<td><button type="button" class="mk-rm" data-rm="' + id + '" aria-label="' + t('remove') + '">×</button></td></tr>';
+			}).join('') + '</tbody></table>' +
+			'<div class="mk-totals"><h2>' + t('totals') + '</h2><p><span>' + t('subtotal') + '</span><span>' + money(total) + '</span></p><p><span>' + t('shipping') + '</span><span>' + t('shippingV') + '</span></p>' +
+			'<p class="mk-sum"><span>' + t('total') + '</span><span>' + money(total) + '</span></p><button type="button" class="gmk-btn" id="checkout">' + t('checkout') + '</button></div></div>' :
+			'<div class="woocommerce-info">' + t('cartEmpty') + '</div><p><a class="gmk-btn" href="#/tienda">' + t('backShop') + '</a></p>';
+		main.innerHTML = '<div class="woocommerce gmk-container gmk-page gmk-page--wc"><header class="gmk-page__head"><h1>' + t('cartTitle') + '</h1></header><div class="gmk-content">' + body + '</div></div>';
+		main.querySelectorAll('[data-qty]').forEach(function (inp) {
+			inp.addEventListener('change', function () {
+				var n = Math.max(0, Math.min(20, parseInt(inp.value, 10) || 0));
+				if (n) { cart[inp.getAttribute('data-qty')] = n; } else { delete cart[inp.getAttribute('data-qty')]; }
+				updateCount(); cartPage();
+			});
+		});
+		main.querySelectorAll('[data-rm]').forEach(function (b) { b.addEventListener('click', function () { delete cart[b.getAttribute('data-rm')]; updateCount(); cartPage(); }); });
+		var co = document.getElementById('checkout');
+		if (co) { co.addEventListener('click', function () { toast('<span>' + t('checkoutDemo') + '</span>'); }); }
+	}
+
+	function account() {
+		main.innerHTML = '<div class="woocommerce gmk-container gmk-page gmk-page--wc"><header class="gmk-page__head"><h1>' + t('accTitle') + '</h1></header><div class="gmk-content">' +
+			'<p class="gmk-note">' + t('accDemo') + '</p><p>' + t('accText') + '</p><p><a class="gmk-btn" href="#/tienda">' + t('backShop') + '</a></p></div></div>';
+	}
+
+	/* ---------- Rutas ---------- */
+	var lastPath = '';
+	function route() {
+		var h = location.hash.slice(1);
+		if (h === 'en' || h === 'es') { setLang(h, true); history.replaceState(null, '', '#/'); h = '/'; }
+		if (h === 'arriba') { return; }
+		if (h === '/demo') { toast('<span>' + t('linkDemo') + '</span>'); history.replaceState(null, '', lastPath ? '#' + lastPath : '#/'); return; }
+		var parts = (h || '/').split('?'), path = parts[0] || '/', q = new URLSearchParams(parts[1] || '');
+		document.body.classList.remove('gmk-filters-open', 'gmk-lock');
+		document.querySelector('.gmk-suggest').hidden = true;
+		if (path === '/tienda') { shop(q); }
+		else if (path.indexOf('/p/') === 0) { product(path.slice(3)); }
+		else if (path === '/carrito') { cartPage(); }
+		else if (path === '/cuenta') { account(); }
+		else { home(); }
+		if (path !== lastPath.split('?')[0] || path !== '/tienda') { window.scrollTo(0, 0); }
+		lastPath = h || '/';
+		markNav();
+	}
+	window.addEventListener('hashchange', route);
+
+	/* ---------- Idioma ---------- */
+	function setLang(l, silent) {
+		lang = l === 'en' ? 'en' : 'es';
+		try { localStorage.setItem('gmk-lang', lang); } catch (e) {}
+		applyStatic();
+		window.dispatchEvent(new Event('resize')); // la barra recalcula el menú «Más»
+		if (!silent) { route(); }
+	}
+	document.querySelectorAll('.gmk-lang a').forEach(function (a) {
+		a.addEventListener('click', function (e) { e.preventDefault(); setLang(a.getAttribute('data-lang')); });
+	});
+
+	/* ---------- Clics generales: añadir, guardar, volver arriba ---------- */
+	document.addEventListener('click', function (e) {
+		var add = e.target.closest('[data-add]');
+		if (add) { e.preventDefault(); addToCart(add.getAttribute('data-add')); return; }
+		var w = e.target.closest('[data-wish]');
+		if (w) {
+			e.preventDefault();
+			var id = w.getAttribute('data-wish');
+			wish[id] = !wish[id];
+			w.innerHTML = heart(wish[id]) + '<span class="yith-wcwl-add-to-wishlist-button__label">' + (wish[id] ? t('saved') : t('save')) + '</span>';
+			return;
+		}
+		var top = e.target.closest('a[href="#arriba"]');
+		if (top) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+	});
+
+	/* ---------- Búsqueda en vivo (en la tienda real la responde WordPress) ---------- */
+	var form = document.querySelector('.gmk-search'), input = form.querySelector('.gmk-search__input'), sel = form.querySelector('.gmk-search__cat'), box = form.querySelector('.gmk-suggest'), active = -1, timer;
+	function suggest() {
+		var q = input.value.trim();
+		if (q.length < 2) { box.hidden = true; return; }
+		var s = norm(q), html = '';
+		CATS.filter(function (c) { return norm(c[lang]).indexOf(s) > -1; }).forEach(function (c) {
+			html += '<a class="gmk-suggest__cat" href="#/tienda?cat=' + c.id + '">' + t('searchCat') + ' <strong>' + c[lang] + '</strong></a>';
+		});
+		P.filter(function (p) { return (!sel.value || p.cat === sel.value) && norm(name(p)).indexOf(s) > -1; }).slice(0, 6).forEach(function (p) {
+			html += '<a class="gmk-suggest__item" href="#/p/' + p.id + '">' + img(p) + '<span><strong>' + esc(name(p)) + '</strong><small>' + catOf(p.cat)[lang] + '</small></span><em>' + money(cur(p)) + '</em></a>';
+		});
+		box.innerHTML = html ? html + '<button type="submit" class="gmk-suggest__all">' + t('searchSeeAll') + ' “' + esc(q) + '”</button>' : '<p class="gmk-suggest__none">' + t('searchNone') + '</p>';
+		box.hidden = false;
+		active = -1;
+	}
+	input.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(suggest, 150); });
+	input.addEventListener('focus', function () { if (input.value.trim().length > 1) { suggest(); } });
+	sel.addEventListener('change', suggest);
+	input.addEventListener('keydown', function (e) {
+		var items = box.querySelectorAll('a');
+		if (box.hidden || !items.length) { return; }
+		if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+			e.preventDefault();
+			active = (active + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+			items.forEach(function (a, i) { a.classList.toggle('is-active', i === active); });
+		} else if (e.key === 'Enter' && active > -1) {
+			e.preventDefault();
+			location.hash = items[active].getAttribute('href');
+			input.blur();
+		}
+	});
+	box.addEventListener('click', function (e) { if (e.target.closest('a')) { box.hidden = true; input.blur(); } });
+	document.addEventListener('click', function (e) { if (!form.contains(e.target)) { box.hidden = true; } });
+	form.addEventListener('submit', function (e) {
+		e.preventDefault();
+		var q = input.value.trim(), p = new URLSearchParams();
+		if (q) { p.set('s', q); }
+		if (sel.value) { p.set('cat', sel.value); }
+		box.hidden = true;
+		input.blur();
+		location.hash = '#/tienda' + (p.toString() ? '?' + p : '');
+	});
+
+	/* ---------- Inicio ---------- */
+	document.getElementById('year').textContent = new Date().getFullYear();
+	var saved = (function () { try { return localStorage.getItem('gmk-lang'); } catch (e) { return null; } })();
+	var nav = (navigator.language || '').toLowerCase();
+	lang = location.hash === '#en' ? 'en' : location.hash === '#es' ? 'es' : saved ? saved : (nav !== '' && nav.indexOf('es') !== 0 ? 'en' : 'es');
+	applyStatic();
+	route();
+})();
+</script>
+<!-- JavaScript real del tema (copia de assets/js/main.js): menú lateral, filtros en móvil, selector del buscador y «Más» -->
+<script src="gmarket.js"></script>
+<script data-goatcounter="https://gmarket.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</body>
+</html>
