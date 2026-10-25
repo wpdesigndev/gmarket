@@ -2,6 +2,9 @@
 /**
  * Cabecera del sitio. Si existe una cabecera hecha con Elementor (Header & Footer Builder), se usa esa.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>

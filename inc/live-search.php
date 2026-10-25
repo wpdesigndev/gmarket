@@ -17,8 +17,12 @@ add_action( 'wp_ajax_nopriv_gmk_search', 'gmk_live_search' );
 function gmk_live_search() {
 	check_ajax_referer( 'gmk_search', 'nonce' );
 	global $wpdb;
+	if ( ! function_exists( 'wc_get_product' ) ) {
+		wp_send_json_success( array( 'products' => array(), 'cats' => array() ) );
+	}
 
-	$q    = isset( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '';
+	// Como mucho 100 caracteres: nadie busca más y así no se lanzan consultas enormes.
+	$q    = isset( $_GET['q'] ) ? mb_substr( sanitize_text_field( wp_unslash( $_GET['q'] ) ), 0, 100 ) : '';
 	$lang = isset( $_GET['lang'] ) ? sanitize_text_field( wp_unslash( $_GET['lang'] ) ) : '';
 	$tr   = fn( $s ) => gmk_trp_translate( $s, $lang );
 	$url  = fn( $link ) => gmk_trp_url( $link, $lang );

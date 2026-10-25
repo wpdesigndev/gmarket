@@ -2,6 +2,9 @@
 /**
  * Comentarios de las entradas del blog.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 if ( post_password_required() ) {
 	return;

@@ -39,7 +39,9 @@ function gmk_latest_release() {
 		$body = json_decode( wp_remote_retrieve_body( $response ), true );
 		if ( is_array( $body ) && ! empty( $body['tag_name'] ) && empty( $body['draft'] ) && empty( $body['prerelease'] ) ) {
 			foreach ( isset( $body['assets'] ) ? (array) $body['assets'] : array() as $asset ) {
-				if ( isset( $asset['name'], $asset['browser_download_url'] ) && GMK_ASSET === $asset['name'] ) {
+				// Solo se acepta el zip publicado en este mismo repositorio.
+				if ( isset( $asset['name'], $asset['browser_download_url'] ) && GMK_ASSET === $asset['name']
+					&& 0 === strpos( $asset['browser_download_url'], 'https://github.com/' . GMK_REPO . '/releases/download/' ) ) {
 					$release = array(
 						'version' => ltrim( (string) $body['tag_name'], 'vV' ),
 						'package' => $asset['browser_download_url'],

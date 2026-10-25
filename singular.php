@@ -2,6 +2,10 @@
 /**
  * Páginas y entradas.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 get_header();
 while ( have_posts() ) :
 	the_post();

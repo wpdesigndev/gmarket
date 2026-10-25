@@ -2,6 +2,10 @@
 /**
  * Plantilla general (blog, archivos y búsquedas).
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 get_header();
 ?>
 <div class="gmk-container gmk-page">

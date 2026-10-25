@@ -83,7 +83,7 @@ function gmk_filter_base_url() {
 	$args = array();
 	foreach ( $keep as $key ) {
 		if ( isset( $_GET[ $key ] ) && '' !== $_GET[ $key ] && 'paged' !== $key ) { // phpcs:ignore
-			$args[ $key ] = sanitize_text_field( wp_unslash( $_GET[ $key ] ) ); // phpcs:ignore
+			$args[ $key ] = rawurlencode( sanitize_text_field( wp_unslash( $_GET[ $key ] ) ) ); // phpcs:ignore
 		}
 	}
 	return add_query_arg( $args, $url );

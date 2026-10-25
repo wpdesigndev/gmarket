@@ -2,6 +2,10 @@
 /**
  * Página no encontrada.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 get_header();
 ?>
 <div class="gmk-container gmk-404">

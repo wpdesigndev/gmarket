@@ -2,6 +2,10 @@
 /**
  * Buscador de la cabecera: categoría (menú desplegable) + texto, con sugerencias en vivo.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $gmk_cat = isset( $_GET['product_cat'] ) ? sanitize_title( wp_unslash( $_GET['product_cat'] ) ) : ''; // phpcs:ignore
 if ( ! $gmk_cat && is_tax( 'product_cat' ) ) {
 	$gmk_cat = get_queried_object()->slug;

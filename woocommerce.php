@@ -2,6 +2,10 @@
 /**
  * Contenedor de WooCommerce: tienda y categorías con filtros, y ficha de producto.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 get_header();
 
 if ( is_singular( 'product' ) ) :

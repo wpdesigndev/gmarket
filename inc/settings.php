@@ -215,7 +215,7 @@ function gmk_texts_sanitize( $input ) {
 		if ( ! isset( $input[ $key ] ) ) {
 			continue;
 		}
-		$value = wp_unslash( $input[ $key ] );
+		$value = $input[ $key ]; // options.php ya le quita las barras invertidas.
 		switch ( $type ) {
 			case 'textarea':
 				$out[ $key ] = sanitize_textarea_field( $value );

@@ -3,6 +3,10 @@
  * Pie del sitio. Si existe un pie hecho con Elementor (Header & Footer Builder), se usa ese.
  * Textos: Apariencia › Textos de la tienda › Pie y contacto.
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 $gmk_trust = array(
 	array( 'globe', gmk_t( 'ft1_title' ), esc_html( gmk_t( 'ft1_text' ) ) ),
 	array( 'truck', gmk_t( 'ft2_title' ), esc_html( gmk_t( 'ft2_text' ) ) ),
